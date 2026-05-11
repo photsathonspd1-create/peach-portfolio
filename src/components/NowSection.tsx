@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Zap,
-  Radio,
   Target,
   Coffee,
   Sparkles,
@@ -32,25 +31,25 @@ const nowItems = [
   {
     icon: Zap,
     label: "Building",
-    value: "Peach Portfolio — 3D + motion-rich personal site",
+    value: "ACEX AI — ระบบ Autonomous Workflow",
     color: "#58e1ff",
   },
   {
     icon: Target,
     label: "Focus",
-    value: "Next.js 16, Three.js, Framer Motion systems",
+    value: "AI Agent, n8n, Make, OpenAI API Integration",
     color: "#ff8462",
   },
   {
     icon: Coffee,
     label: "Learning",
-    value: "WebGL shaders, spatial UI, agentic workflows",
+    value: "LangChain, Web Automation, Embedded IoT",
     color: "#87ffbe",
   },
   {
     icon: Sparkles,
     label: "Open to",
-    value: "Freelance projects & creative collaborations",
+    value: "Freelance AI Automation & System Design",
     color: "#a98bff",
   },
 ];
@@ -78,11 +77,10 @@ export default function NowSection() {
           Currently active
         </div>
         <h2 className="mt-4 text-3xl font-semibold text-white sm:text-5xl">
-          What I&apos;m doing now.
+          ตอนนี้ทำอะไรอยู่
         </h2>
         <p className="mt-5 text-base leading-7 text-zinc-300">
-          A snapshot of current focus, active learning, and what I&apos;m
-          available for.
+          ภาพรวมของสิ่งที่กำลังโฟกัส เรียนรู้ และพร้อมรับงาน
         </p>
       </motion.div>
 

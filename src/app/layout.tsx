@@ -13,17 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
- title: "Peach | PHOTSATHON KUMTAEW",
+ title: "Peach | AI Workflow Builder — PHOTSATHON KUMTAEW",
  description:
-  "Portfolio by PHOTSATHON KUMTAEW — Frontend architecture, AI integration, motion systems, and polished digital experiences.",
+  "AI Workflow Builder — ออกแบบ Automation ด้วย AI Tools ผสาน Electronics และ System Design เพื่อสร้างระบบทำงานได้จริง",
  icons: {
   icon: "/favicon.svg",
   shortcut: "/favicon.ico",
  },
  openGraph: {
-  title: "Peach | PHOTSATHON KUMTAEW",
+  title: "Peach | AI Workflow Builder — PHOTSATHON KUMTAEW",
   description:
-   "Builder who blends sharp product taste, technical execution, AI systems, and motion-rich digital experiences.",
+   "AI Workflow Builder — Automation, Content Systems & Electronics Integration",
   url: "https://peach-portfolio.vercel.app",
   siteName: "Peach Portfolio",
   locale: "th_TH",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
  },
  twitter: {
   card: "summary_large_image",
-  title: "Peach | PHOTSATHON KUMTAEW",
+  title: "Peach | AI Workflow Builder — PHOTSATHON KUMTAEW",
   description:
-   "Builder who blends sharp product taste, technical execution, AI systems, and motion-rich digital experiences.",
+   "AI Workflow Builder — Automation, Content Systems & Electronics Integration",
   images: ["/og.png"],
  },
  metadataBase: new URL("https://peach-portfolio.vercel.app"),
@@ -53,7 +53,7 @@ export default function RootLayout({
  children: React.ReactNode;
 }>) {
  return (
-  <html lang="th" className={`${geistSans.variable} ${geistMono.variable}`}>
+  <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
    <body suppressHydrationWarning>{children}</body>
   </html>
  );

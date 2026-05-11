@@ -6,23 +6,29 @@ import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
  ArrowUpRight,
- BadgeCheck,
  BrainCircuit,
- BriefcaseBusiness,
- Code2,
  Cpu,
  Download,
  FolderGit2,
  Layers3,
  Mail,
  MousePointer2,
- ShieldCheck,
+ Phone,
+ MapPin,
  Sparkles,
  TerminalSquare,
  Zap,
+ CircuitBoard,
+ Globe,
+ Wrench,
+ BarChart3,
+ GraduationCap,
+ MessageCircle,
+ Cog,
 } from "lucide-react";
 import NowSection from "@/components/NowSection";
 import Footer from "@/components/Footer";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const Scene3D = dynamic(() => import("@/components/Scene3D"), {
  ssr: false,
@@ -40,102 +46,174 @@ const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const projects = [
  {
-  name: "Arra Oracle V3",
-  type: "AI Command Center",
+  name: "ACEX AI",
+  type: "Autonomous Workflow System",
   summary:
-   "A high-signal operations surface for agents, data flows, and rapid decision loops.",
-  stack: ["Next.js", "AI UX", "Realtime"],
-  metric: "0.8s",
-  metricLabel: "decision loop",
+   "ระบบ AI ที่ออกแบบมาให้สามารถวางแผนและลงมือทำงานได้ด้วยตัวเอง เพื่อช่วยจัดการงานอัตโนมัติในหลายรูปแบบ ด้วย Plan → Do → Check → Act loop",
+  stack: ["AI Agent", "API Integration", "Automation", "Memory System"],
+  metric: "Auto",
+  metricLabel: "plan & execute",
   icon: BrainCircuit,
   accent: "from-[#58e1ff] to-[#a98bff]",
+  role: "THE ARCHITECT — โครงสร้างการทำงานของระบบ",
+  features: [
+   "AI วางแผนและตัดสินใจให้งานเองอัตโนมัติ",
+   "เชื่อมต่อ API และบริการภายนอก",
+   "ทำงานแบบ Loop จนกว่าจะสำเร็จ",
+   "บันทึกและจัดการ Memory",
+   "รองรับการเพิ่ม Module และความสามารถ",
+  ],
+  impact: [
+   "ลดเวลาการทำงานซ้ำซ้อนได้อย่างมีนัยสำคัญ",
+   "เปลี่ยนงาน Manual ให้เป็น Automation",
+   "เพิ่มความเร็วในการทำงานและการตัดสินใจ",
+   "ต่อยอดใช้ได้หลาย Business Use Case",
+  ],
  },
  {
-  name: "Flow Story Engine",
-  type: "Creative Automation",
+  name: "AI Content Automation",
+  type: "Content Production Pipeline",
   summary:
-   "A narrative pipeline that turns rough ideas into structured scripts, scenes, and publish-ready systems.",
-  stack: ["Motion", "Content Ops", "Design"],
-  metric: "12x",
-  metricLabel: "faster drafts",
+   "ระบบผลิตคอนเทนต์อัตโนมัติที่ใช้ AI วิเคราะห์ข้อมูลและกลุ่มเป้าหมาย สร้าง Script, Caption, Ideas และ SEO Keywords",
+  stack: ["AI Tools", "Content Ops", "SEO", "Data Analysis"],
+  metric: "Auto",
+  metricLabel: "content pipeline",
   icon: Sparkles,
   accent: "from-[#ff8462] to-[#ffd166]",
  },
  {
-  name: "Agentic Ops Grid",
-  type: "Productivity System",
+  name: "System & Automation",
+  type: "Internal Operations",
   summary:
-   "A dense Bento workspace for monitoring tasks, tools, evidence, and execution state.",
-  stack: ["Dashboards", "Automation", "UX"],
+   "ออกแบบระบบอัตโนมัติภายใน ใช้ AI จัดการข้อมูล ไฟล์ รายงาน และสร้าง CLI Tools พร้อมเชื่อมต่อ API ต่างๆ",
+  stack: ["CLI Tools", "API", "Automation", "Data Mgmt"],
   metric: "24/7",
-  metricLabel: "system watch",
-  icon: Layers3,
+  metricLabel: "auto-ops",
+  icon: Cog,
   accent: "from-[#87ffbe] to-[#58e1ff]",
  },
  {
-  name: "Commerce Intelligence",
-  type: "Research Build",
+  name: "Hardware + Software Integration",
+  type: "Embedded & IoT",
   summary:
-   "A compact research cockpit for surfacing weak signals, validating paths, and tracking opportunity quality.",
-  stack: ["Data", "Strategy", "Security"],
-  metric: "4D",
-  metricLabel: "signal map",
-  icon: ShieldCheck,
+   "ผสาน AI เข้ากับงาน Electronics — ออกแบบวงจร เขียนโค้ดควบคุม Arduino/ESP32/Raspberry Pi และเชื่อมต่อ IoT",
+  stack: ["Arduino", "ESP32", "IoT", "Sensors"],
+  metric: "HW",
+  metricLabel: "integrated",
+  icon: CircuitBoard,
   accent: "from-[#a98bff] to-[#ff8462]",
  },
 ];
 
 const skills = [
  {
-  name: "Frontend Architecture",
-  detail:
-   "Next.js app router, component systems, responsive layouts, and interfaces that stay fast under real content.",
-  tags: ["Next.js", "React", "Tailwind"],
-  icon: Code2,
- },
- {
-  name: "Motion Systems",
-  detail:
-   "Framer Motion choreography, hover physics, progressive reveal patterns, and motion that clarifies intent.",
-  tags: ["Framer Motion", "Microinteractions", "UI polish"],
-  icon: Zap,
- },
- {
-  name: "AI Integration",
-  detail:
-   "Agent workflows, prompt surfaces, orchestration patterns, and practical AI tools built around operator control.",
-  tags: ["Agents", "LLMs", "Automation"],
+  name: "AI Workflow",
+  detail: "ออกแบบ AI Workflow ใช้ AI วางแผนและทำงานอัตโนมัติ",
+  tags: ["AI Agent", "n8n", "Make", "Zapier"],
   icon: BrainCircuit,
  },
  {
-  name: "Systems Thinking",
-  detail:
-   "Clear operational models, decision loops, evidence capture, and resilient flows for high-pressure work.",
-  tags: ["Ops", "Process", "Reliability"],
+  name: "AI Integration",
+  detail: "เชื่อมต่อ AI กับ API, Database และเครื่องมือต่าง ๆ",
+  tags: ["OpenAI API", "LangChain", "Webhook"],
   icon: Cpu,
  },
  {
-  name: "Security Mindset",
-  detail:
-   "Threat-aware product thinking, careful boundaries, and clean handling of sensitive workflows.",
-  tags: ["Risk", "Validation", "Hardening"],
-  icon: ShieldCheck,
+  name: "Prompt Engineering",
+  detail: "ออกแบบ Prompt ให้ AI ตอบสนองแม่นยำและตรงตามเป้าหมาย",
+  tags: ["ChatGPT", "Claude", "System Design"],
+  icon: MessageCircle,
  },
  {
-  name: "Design Polish",
-  detail:
-   "Quiet hierarchy, crisp spacing, accessible contrast, and visual systems that feel premium without noise.",
-  tags: ["Bento", "Design systems", "A11y"],
-  icon: BadgeCheck,
+  name: "Automation & System",
+  detail: "สร้างระบบ Automation และจัดการ Process อย่างมีประสิทธิภาพ",
+  tags: ["Python", "Bash", "CLI Tools"],
+  icon: Zap,
  },
+ {
+  name: "Electronics & Control",
+  detail: "เขียนโค้ดควบคุม อุปกรณ์/เซนเซอร์ และออกแบบระบบให้ทำงานตามที่ต้องการ",
+  tags: ["Arduino", "ESP32", "Raspberry Pi", "GPIO"],
+  icon: CircuitBoard,
+ },
+ {
+  name: "Data & Insight",
+  detail: "จัดการข้อมูล วิเคราะห์ และสรุปผลเพื่อในการตัดสินใจ",
+  tags: ["Data Analysis", "Reports", "Visualization"],
+  icon: BarChart3,
+ },
+];
+
+const electronicsSkills = [
+ { name: "Circuit Design", detail: "ออกแบบวงจรอิเล็กทรอนิกส์ใช้งานจริง", icon: CircuitBoard },
+ { name: "Microcontroller", detail: "เขียนโค้ดควบคุม Arduino, ESP32, Raspberry Pi", icon: Cpu },
+ { name: "Sensors & IoT", detail: "ใช้งานเซนเซอร์, I2C, GPIO และเชื่อมต่อ IoT", icon: Globe },
+ { name: "Automation Control", detail: "ควบคุมอุปกรณ์/รีเลย์ตามเงื่อนไขที่กำหนด", icon: Cog },
+ { name: "System Integration", detail: "เชื่อมต่อ Hardware + Software เพื่อทำงานร่วมกัน", icon: Wrench },
+];
+
+const experience = [
+ {
+  title: "AI Content Automation",
+  icon: Sparkles,
+  accent: "#58e1ff",
+  items: [
+   "ใช้ AI ช่วยวิเคราะห์ข้อมูลและกลุ่มเป้าหมาย",
+   "สร้างคอนเทนต์อัตโนมัติ เช่น Script, Caption, Ideas, SEO Keywords",
+   "ปรับ Workflow การผลิตสินค้าให้มีประสิทธิภาพ",
+   "เพิ่มประสิทธิภาพแผนการเล่าเรื่องให้กลุ่มผู้ชม",
+  ],
+ },
+ {
+  title: "System & Automation",
+  icon: Cog,
+  accent: "#ff8462",
+  items: [
+   "ออกแบบระบบอัตโนมัติให้สำหรับทำงานภายใน",
+   "ใช้ AI จัดการข้อมูล/ไฟล์/รายงานอัตโนมัติ",
+   "สร้าง CLI Tools ช่วยจัดการงานต่าง ๆ",
+   "เชื่อมต่อ API และเครื่องมือต่าง ๆ เพื่อทำงานร่วมกันอย่างมีประสิทธิภาพ",
+  ],
+ },
+ {
+  title: "Creative + Technical",
+  icon: Layers3,
+  accent: "#87ffbe",
+  items: [
+   "ผสาน AI เข้ากับงาน Video, Web, Content และระบบต่าง ๆ",
+   "ใช้ Logic และ Automation แก้ปัญหาที่ยุ่งยากให้ตรงจุด",
+   "เข้าใจกลไกการทำงานขององค์กร Creative และ Technical",
+  ],
+ },
+];
+
+const tools = {
+ "AI / Automation": ["ChatGPT / Claude", "OpenAI API", "LangChain", "Make (Integromat)", "n8n", "Zapier"],
+ Languages: ["Python", "JavaScript", "Arduino (C/C++)", "PlatformIO", "Bash", "JSON"],
+ "Hardware": ["Arduino", "ESP32", "Raspberry Pi", "Sensor", "รีเลย์", "I2C", "GPIO", "Relay", "Breadboard"],
+ Productivity: ["Notion", "Google Workspace", "Airtable", "Slack", "Git / GitHub"],
+};
+
+const strengths = [
+ "คิดเป็นระบบและวิเคราะห์ปัญหาได้ดี",
+ "มุ่งมั่นผลลัพธ์และใช้งานได้จริง",
+ "เรียนรู้เร็ว ปรับตัวได้ทุกสถานการณ์",
+ "ทำงานเป็นทีม สื่อสารชัดเจน",
+ "เปิดรับสิ่งใหม่ และพัฒนาตัวเองเสมอ",
 ];
 
 const contactLinks = [
  {
   label: "Email",
-  value: "acex.peachwork@gmail.com",
-  href: "mailto:acex.peachwork@gmail.com",
+  value: "photsathon.spd1@gmail.com",
+  href: "mailto:photsathon.spd1@gmail.com",
   icon: Mail,
+ },
+ {
+  label: "Phone",
+  value: "064-154-6355",
+  href: "tel:0641546355",
+  icon: Phone,
  },
  {
   label: "GitHub",
@@ -143,16 +221,19 @@ const contactLinks = [
   href: "https://github.com/photsathonspd1-create",
   icon: FolderGit2,
  },
+ {
+  label: "Instagram",
+  value: "@peatz21",
+  href: "https://instagram.com/peatz21",
+  icon: Globe,
+ },
 ];
 
 const container = {
  hidden: { opacity: 0 },
  show: {
   opacity: 1,
-  transition: {
-   staggerChildren: 0.09,
-   delayChildren: 0.08,
-  },
+  transition: { staggerChildren: 0.09, delayChildren: 0.08 },
  },
 };
 
@@ -178,14 +259,15 @@ export default function Home() {
 
    <NowSection />
 
+   {/* Projects */}
    <section
     id="projects"
     className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
    >
     <SectionIntro
-     eyebrow="Selected projects"
-     title="Bento-built systems with sharp surfaces."
-     copy="Command-center work across automation, interface polish, and research systems — built around clarity, speed, and technical presence."
+     eyebrow="Key Projects"
+     title="ระบบ AI ที่สร้างจากความเข้าใจปัญหาจริง"
+     copy="ACEX AI — ระบบ Autonomous Workflow ที่ออกแบบ Architecture เอง ตั้งแต่ Plan → Do → Check → Act พร้อมรองรับการต่อยอดทุกรูปแบบ"
     />
 
     <motion.div
@@ -204,10 +286,7 @@ export default function Home() {
         whileHover={
          shouldReduceMotion
           ? undefined
-          : {
-            y: -8,
-            transition: { duration: 0.25, ease: "easeOut" },
-           }
+          : { y: -8, transition: { duration: 0.25, ease: "easeOut" } }
         }
         className={`group relative min-h-[360px] overflow-hidden rounded-lg border border-white/10 bg-[#0b101a]/90 p-5 shadow-2xl shadow-black/20 ${
          index === 0 || index === 2 ? "xl:col-span-2" : ""
@@ -229,37 +308,34 @@ export default function Home() {
               ? undefined
               : { x: [0, 4, 0], y: [0, -4, 0] }
             }
-            transition={{
-             duration: 3.6,
-             repeat: Infinity,
-             ease: "easeInOut",
-            }}
+            transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-zinc-300"
            >
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
            </motion.div>
           </div>
-
-          <p className="mt-8 text-sm font-medium text-[#87ffbe]">
-           {project.type}
-          </p>
-          <h3 className="mt-3 max-w-sm text-2xl font-semibold text-white">
-           {project.name}
-          </h3>
-          <p className="mt-4 max-w-md text-sm leading-6 text-zinc-300">
-           {project.summary}
-          </p>
+          <p className="mt-8 text-sm font-medium text-[#87ffbe]">{project.type}</p>
+          <h3 className="mt-3 max-w-sm text-2xl font-semibold text-white">{project.name}</h3>
+          {project.role && (
+           <p className="mt-2 text-xs font-medium text-[#ffb49e]">{project.role}</p>
+          )}
+          <p className="mt-4 max-w-md text-sm leading-6 text-zinc-300">{project.summary}</p>
+          {project.features && (
+           <ul className="mt-4 space-y-1.5">
+            {project.features.map((f) => (
+             <li key={f} className="flex items-start gap-2 text-xs text-zinc-400">
+              <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-[#58e1ff]" />
+              {f}
+             </li>
+            ))}
+           </ul>
+          )}
          </div>
-
          <div>
           <div className="mb-5 flex items-end justify-between gap-4 border-t border-white/10 pt-5">
            <div>
-            <p className="text-3xl font-semibold text-white">
-             {project.metric}
-            </p>
-            <p className="mt-1 text-xs uppercase text-zinc-500">
-             {project.metricLabel}
-            </p>
+            <p className="text-3xl font-semibold text-white">{project.metric}</p>
+            <p className="mt-1 text-xs uppercase text-zinc-500">{project.metricLabel}</p>
            </div>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -280,14 +356,15 @@ export default function Home() {
     </motion.div>
    </section>
 
+   {/* Skills */}
    <section
     id="skills"
     className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
    >
     <SectionIntro
-     eyebrow="Interactive skills"
-     title="A precise stack for ambitious interfaces."
-     copy="Capabilities tuned for real product surfaces, from architecture and AI integration to motion systems that make complex work feel controlled."
+     eyebrow="Core Skills"
+     title="AI Workflow + Electronics + Automation"
+     copy="ทักษะที่ผสมผสานระหว่าง AI, Electronics และ System Design — ออกแบบ Workflow ด้วย AI เขียนโค้ดควบคุม Hardware และสร้างระบบ Automation ที่ใช้งานได้จริง"
     />
 
     <div className="mt-10 grid gap-4 lg:grid-cols-[1fr_0.82fr]">
@@ -329,9 +406,7 @@ export default function Home() {
           <MousePointer2 className="h-4 w-4 text-zinc-500 opacity-0 transition-opacity group-hover:opacity-100" />
          </div>
          <h3 className="mt-5 text-lg font-semibold">{skill.name}</h3>
-         <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-300">
-          {skill.detail}
-         </p>
+         <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-300">{skill.detail}</p>
         </motion.button>
        );
       })}
@@ -347,15 +422,9 @@ export default function Home() {
       <div className="flex h-14 w-14 items-center justify-center rounded-lg border border-[#ff8462]/40 bg-[#ff8462]/10 text-[#ffb49e]">
        <ActiveIcon className="h-6 w-6" aria-hidden="true" />
       </div>
-      <p className="mt-8 text-sm font-medium text-[#ffb49e]">
-       Active capability
-      </p>
-      <h3 className="mt-3 text-3xl font-semibold text-white">
-       {activeSkill.name}
-      </h3>
-      <p className="mt-5 text-base leading-8 text-zinc-300">
-       {activeSkill.detail}
-      </p>
+      <p className="mt-8 text-sm font-medium text-[#ffb49e]">Active capability</p>
+      <h3 className="mt-3 text-3xl font-semibold text-white">{activeSkill.name}</h3>
+      <p className="mt-5 text-base leading-8 text-zinc-300">{activeSkill.detail}</p>
       <div className="mt-8 flex flex-wrap gap-2">
        {activeSkill.tags.map((tag) => (
         <span
@@ -367,11 +436,13 @@ export default function Home() {
        ))}
       </div>
       <div className="mt-10 grid grid-cols-3 gap-3 border-t border-white/10 pt-6">
-       {["Clarity", "Speed", "Finish"].map((label, index) => (
+       {[
+        ["System", "AI"],
+        ["Hardware", "Embedded"],
+        ["Output", "Real"],
+       ].map(([label, value]) => (
         <div key={label} className="rounded-lg bg-white/[0.04] p-3">
-         <p className="text-2xl font-semibold text-white">
-          {index === 0 ? "99" : index === 1 ? "12x" : "A+"}
-         </p>
+         <p className="text-2xl font-semibold text-white">{value}</p>
          <p className="mt-1 text-xs text-zinc-500">{label}</p>
         </div>
        ))}
@@ -380,6 +451,221 @@ export default function Home() {
     </div>
    </section>
 
+   {/* Electronics & Embedded */}
+   <section
+    id="electronics"
+    className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+   >
+    <SectionIntro
+     eyebrow="Hardware Skills"
+     title="Electronics & Embedded Systems"
+     copy="ออกแบบวงจร เขียนโค้ดควบคุม Microcontroller และเชื่อมต่อ Hardware + Software ให้ทำงานร่วมกัน"
+    />
+
+    <motion.div
+     variants={container}
+     initial="hidden"
+     whileInView="show"
+     viewport={{ once: true, margin: "-120px" }}
+     className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+    >
+     {electronicsSkills.map((skill) => {
+      const Icon = skill.icon;
+      return (
+       <motion.div
+        key={skill.name}
+        variants={item}
+        whileHover={
+         shouldReduceMotion ? undefined : { y: -6, transition: { duration: 0.2 } }
+        }
+        className="group rounded-lg border border-white/10 bg-[#0b101a] p-5 transition duration-300 hover:border-[#a98bff]/40 hover:bg-[#0f1425]"
+       >
+        <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#a98bff]/30 bg-[#a98bff]/10">
+         <Icon className="h-5 w-5 text-[#a98bff]" aria-hidden="true" />
+        </span>
+        <h3 className="mt-5 text-base font-semibold text-white">{skill.name}</h3>
+        <p className="mt-2 text-sm leading-6 text-zinc-400">{skill.detail}</p>
+       </motion.div>
+      );
+     })}
+    </motion.div>
+   </section>
+
+   {/* Experience */}
+   <section
+    id="experience"
+    className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+   >
+    <SectionIntro
+     eyebrow="Experience"
+     title="งานที่ทำ — AI, Automation, Creative"
+     copy="ผสมผสาน AI เข้ากับ Content Production, System Design และ Hardware Integration"
+    />
+
+    <motion.div
+     variants={container}
+     initial="hidden"
+     whileInView="show"
+     viewport={{ once: true, margin: "-120px" }}
+     className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-3"
+    >
+     {experience.map((exp) => {
+      const Icon = exp.icon;
+      return (
+       <motion.article
+        key={exp.title}
+        variants={item}
+        className="rounded-lg border border-white/10 bg-[#0b101a] p-6"
+       >
+        <div className="flex items-center gap-3">
+         <span
+          className="flex h-10 w-10 items-center justify-center rounded-lg border"
+          style={{
+           borderColor: `${exp.accent}40`,
+           backgroundColor: `${exp.accent}15`,
+          }}
+         >
+          <Icon className="h-5 w-5" style={{ color: exp.accent }} aria-hidden="true" />
+         </span>
+         <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
+        </div>
+        <ul className="mt-5 space-y-3">
+         {exp.items.map((expItem) => (
+          <li key={expItem} className="flex items-start gap-3 text-sm leading-6 text-zinc-300">
+           <span
+            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+            style={{ backgroundColor: exp.accent }}
+           />
+           {expItem}
+          </li>
+         ))}
+        </ul>
+       </motion.article>
+      );
+     })}
+    </motion.div>
+   </section>
+
+   {/* Education */}
+   <section
+    id="education"
+    className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+   >
+    <motion.div
+     initial={{ opacity: 0, y: 24 }}
+     whileInView={{ opacity: 1, y: 0 }}
+     viewport={{ once: true, margin: "-120px" }}
+     transition={{ duration: 0.7, ease: smoothEase }}
+     className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]"
+    >
+     <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6 sm:p-8 lg:p-10">
+      <div className="flex items-center gap-3">
+       <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#ffd166]/40 bg-[#ffd166]/10">
+        <GraduationCap className="h-5 w-5 text-[#ffd166]" aria-hidden="true" />
+       </span>
+       <p className="text-sm font-medium uppercase text-[#ffd166]">Education</p>
+      </div>
+      <h3 className="mt-6 text-2xl font-semibold text-white">
+       วิทยาลัยการอาชีพอมก๋อย / มหาวิทยาลัยทักษิณ
+      </h3>
+      <p className="mt-3 text-base text-zinc-300">
+       คณะอิเล็กทรอนิกส์ / อิเล็กทรอนิกส์อุตสาหกรรม (ปริญญาโท)
+      </p>
+      <div className="mt-6 flex items-center gap-6">
+       <div>
+        <p className="text-3xl font-semibold text-white">3.37</p>
+        <p className="mt-1 text-xs text-zinc-500">GPAX</p>
+       </div>
+       <div>
+        <p className="text-3xl font-semibold text-white">2564</p>
+        <p className="mt-1 text-xs text-zinc-500">ปีที่สำเร็จ</p>
+       </div>
+      </div>
+     </div>
+
+     <div className="grid gap-4">
+      {/* Language */}
+      <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6">
+       <p className="text-sm font-medium uppercase text-[#58e1ff]">Language</p>
+       <div className="mt-5 space-y-4">
+        <div>
+         <div className="flex items-center justify-between text-sm">
+          <span className="text-white">ไทย</span>
+          <span className="text-zinc-500">Native</span>
+         </div>
+         <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/[0.06]">
+          <div className="h-full w-full rounded-full bg-[#58e1ff]" />
+         </div>
+        </div>
+        <div>
+         <div className="flex items-center justify-between text-sm">
+          <span className="text-white">English</span>
+          <span className="text-zinc-500">~60%</span>
+         </div>
+         <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/[0.06]">
+          <div className="h-full w-[60%] rounded-full bg-[#ff8462]" />
+         </div>
+        </div>
+       </div>
+      </div>
+
+      {/* Strengths */}
+      <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6">
+       <p className="text-sm font-medium uppercase text-[#87ffbe]">Strengths</p>
+       <ul className="mt-4 space-y-2.5">
+        {strengths.map((s) => (
+         <li key={s} className="flex items-start gap-3 text-sm text-zinc-300">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#87ffbe]" />
+          {s}
+         </li>
+        ))}
+       </ul>
+      </div>
+     </div>
+    </motion.div>
+   </section>
+
+   {/* Tools & Technologies */}
+   <section
+    id="tools"
+    className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+   >
+    <SectionIntro
+     eyebrow="Tech Stack"
+     title="เครื่องมือที่ใช้"
+     copy="AI Tools, Languages, Hardware และ Productivity — เลือกใช้ตามงานที่เหมาะสม"
+    />
+
+    <motion.div
+     variants={container}
+     initial="hidden"
+     whileInView="show"
+     viewport={{ once: true, margin: "-120px" }}
+     className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+    >
+     {Object.entries(tools).map(([category, items]) => (
+      <motion.div
+       key={category}
+       variants={item}
+       className="rounded-lg border border-white/10 bg-[#0b101a] p-5"
+      >
+       <p className="text-sm font-medium uppercase text-[#ffb49e]">{category}</p>
+       <div className="mt-4 flex flex-wrap gap-2">
+        {items.map((tool) => (
+         <span
+          key={tool}
+          className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-zinc-300"
+         >
+          {tool}
+         </span>
+        ))}
+       </div>
+      </motion.div>
+     ))}
+    </motion.div>
+   </section>
+
+   {/* Contact */}
    <section
     id="contact"
     className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
@@ -392,32 +678,36 @@ export default function Home() {
      className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]"
     >
      <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6 sm:p-8 lg:p-10">
-      <p className="text-sm font-medium uppercase text-[#87ffbe]">
-       Contact
-      </p>
+      <p className="text-sm font-medium uppercase text-[#87ffbe]">Contact</p>
       <h2 className="mt-4 max-w-3xl text-4xl font-semibold text-white sm:text-5xl">
-       Build the next precise, fast, unforgettable interface.
+       พร้อมสร้างระบบ AI ที่ทำงานได้จริง
       </h2>
       <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300">
-       Peach is presented here as a calm technical operator: Thai name
-       forward, global-ready identity, and a portfolio system designed
-       for serious product conversations.
+       ผู้ที่มีความสนใจและเชี่ยวชาญในการออกแบบ Workflow โดยใช้ AI Tools หลากหลาย
+       ผสานความรู้ด้านอิเล็กทรอนิกส์และการเขียนโค้ด เพื่อสร้างระบบ Automation
+       ทั้งซอฟต์แวร์และฮาร์ดแวร์ ช่วยลดเวลาและเพิ่มประสิทธิภาพธุรกิจ
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
        <a
-        href="mailto:acex.peachwork@gmail.com"
+        href="mailto:photsathon.spd1@gmail.com"
         className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#05070d] transition hover:bg-[#d9faff] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
        >
         <Mail className="h-4 w-4" aria-hidden="true" />
-        Start a conversation
+        ส่งข้อความ
        </a>
-       <a
-        href="/resume.pdf"
-        className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/[0.12] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
+       <button
+        type="button"
+        disabled
+        title="Resume coming soon"
+        className="inline-flex min-h-12 cursor-not-allowed items-center justify-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-zinc-500 backdrop-blur transition focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
        >
         <Download className="h-4 w-4" aria-hidden="true" />
-        Download CV
-       </a>
+        Resume coming soon
+       </button>
+      </div>
+      <div className="mt-6 flex items-center gap-2 text-sm text-zinc-400">
+       <MapPin className="h-4 w-4" aria-hidden="true" />
+       ชลบุรี (แหลมฉบัง), ประเทศไทย
       </div>
      </div>
 
@@ -429,11 +719,7 @@ export default function Home() {
          key={link.label}
          href={link.href}
          target={link.href.startsWith("http") ? "_blank" : undefined}
-         rel={
-          link.href.startsWith("http")
-           ? "noreferrer noopener"
-           : undefined
-         }
+         rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
          className="group rounded-lg border border-white/10 bg-[#0b101a] p-5 transition duration-300 hover:border-[#58e1ff]/50 hover:bg-[#10202b]"
         >
          <div className="flex items-center justify-between gap-4">
@@ -443,9 +729,7 @@ export default function Home() {
           <ArrowUpRight className="h-4 w-4 text-zinc-500 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" />
          </div>
          <p className="mt-6 text-sm text-zinc-500">{link.label}</p>
-         <p className="mt-2 break-words text-lg font-semibold text-white">
-          {link.value}
-         </p>
+         <p className="mt-2 break-words text-lg font-semibold text-white">{link.value}</p>
         </a>
        );
       })}
@@ -471,7 +755,9 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
    <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#05070d_0%,rgba(5,7,13,0.84)_36%,rgba(5,7,13,0.34)_100%)]" />
    <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(5,7,13,0)_0%,#05070d_94%)]" />
 
-   <Scene3D />
+   <ErrorBoundary>
+    <Scene3D />
+   </ErrorBoundary>
 
    <motion.header
     initial={{ opacity: 0, y: -16 }}
@@ -479,17 +765,14 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
     transition={{ duration: 0.6, ease: smoothEase }}
     className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4"
    >
-    <a
-     href="#top"
-     className="flex items-center gap-3 text-sm font-semibold text-white"
-    >
+    <a href="#top" className="flex items-center gap-3 text-sm font-semibold text-white">
      <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/[0.06]">
       P
      </span>
      <span className="hidden sm:inline">Peach</span>
     </a>
     <nav className="flex items-center gap-2 text-sm text-zinc-300">
-     {["now", "projects", "skills", "contact"].map((navItem) => (
+     {["now", "projects", "skills", "electronics", "experience", "education", "tools", "contact"].map((navItem) => (
       <a
        key={navItem}
        href={`#${navItem}`}
@@ -505,31 +788,23 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
     id="top"
     className="mx-auto grid w-full max-w-7xl items-end gap-10 pb-16 pt-20 sm:pt-28 lg:min-h-[78svh] lg:grid-cols-[1fr_0.72fr] lg:pb-20"
    >
-    <motion.div
-     variants={container}
-     initial="hidden"
-     animate="show"
-     className="max-w-5xl"
-    >
+    <motion.div variants={container} initial="animate" className="max-w-5xl">
      <motion.div
       variants={item}
       className="mb-6 inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.06] px-3 py-2 text-sm text-zinc-200 backdrop-blur"
      >
       <span className="h-2 w-2 bg-[#87ffbe]" />
-      Remembering Peach as the signal
+      AI Workflow Builder
      </motion.div>
 
-     <motion.p
-      variants={item}
-      className="text-sm font-medium uppercase text-[#ffb49e]"
-     >
+     <motion.p variants={item} className="text-sm font-medium uppercase text-[#ffb49e]">
       PHOTSATHON KUMTAEW
      </motion.p>
      <motion.h1
       variants={item}
       className="mt-4 max-w-6xl break-words text-[clamp(3.25rem,11vw,8.8rem)] font-semibold leading-[0.95] text-white"
      >
-      PHOTSATHON KUMTAEW
+      AI Automation · Content Systems · Electronics
      </motion.h1>
      <motion.div
       variants={item}
@@ -537,31 +812,25 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
      >
       <span>Peach</span>
      </motion.div>
-     <motion.p
-      variants={item}
-      className="mt-7 max-w-2xl text-base leading-7 text-zinc-200 sm:text-lg"
-     >
-      A sleek personal portfolio for a builder who blends sharp product
-      taste, technical execution, AI systems, and motion-rich digital
-      experiences.
+     <motion.p variants={item} className="mt-7 max-w-2xl text-base leading-7 text-zinc-200 sm:text-lg">
+      ผู้ที่มีความสนใจและเชี่ยวชาญในการออกแบบ Workflow โดยใช้ AI Tools หลากหลาย
+      ผสานความรู้ด้านอิเล็กทรอนิกส์และการเขียนโค้ด เพื่อสร้างระบบ Automation
+      ทั้งซอฟต์แวร์และฮาร์ดแวร์
      </motion.p>
-     <motion.div
-      variants={item}
-      className="mt-9 flex flex-col gap-3 sm:flex-row"
-     >
+     <motion.div variants={item} className="mt-9 flex flex-col gap-3 sm:flex-row">
       <a
        href="#projects"
        className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-[#58e1ff] px-5 py-3 text-sm font-semibold text-[#031018] transition hover:bg-[#87ffbe] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#05070d]"
       >
        <Layers3 className="h-4 w-4" aria-hidden="true" />
-       View projects
+       ดูโปรเจกต์
       </a>
       <a
        href="#contact"
        className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/[0.12] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
       >
        <TerminalSquare className="h-4 w-4" aria-hidden="true" />
-       Contact Peach
+       ติดต่อ
       </a>
      </motion.div>
     </motion.div>
@@ -575,7 +844,7 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
      {[
       ["Identity", "PHOTSATHON KUMTAEW"],
       ["Handle", "Peach"],
-      ["Mode", "High-polish systems"],
+      ["Location", "ชลบุรี, ไทย"],
      ].map(([label, value], index) => (
       <motion.div
        key={label}
@@ -584,17 +853,11 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
          ? undefined
          : { y: index % 2 === 0 ? [0, -8, 0] : [0, 8, 0] }
        }
-       transition={{
-        duration: 4 + index,
-        repeat: Infinity,
-        ease: "easeInOut",
-       }}
+       transition={{ duration: 4 + index, repeat: Infinity, ease: "easeInOut" }}
        className="rounded-lg border border-white/10 bg-[#07101b]/70 p-4 backdrop-blur"
       >
        <p className="text-xs uppercase text-zinc-500">{label}</p>
-       <p className="mt-3 break-words text-xl font-semibold text-white">
-        {value}
-       </p>
+       <p className="mt-3 break-words text-xl font-semibold text-white">{value}</p>
       </motion.div>
      ))}
     </motion.div>
@@ -621,9 +884,7 @@ function SectionIntro({
    className="max-w-3xl"
   >
    <p className="text-sm font-medium uppercase text-[#58e1ff]">{eyebrow}</p>
-   <h2 className="mt-4 text-3xl font-semibold text-white sm:text-5xl">
-    {title}
-   </h2>
+   <h2 className="mt-4 text-3xl font-semibold text-white sm:text-5xl">{title}</h2>
    <p className="mt-5 text-base leading-7 text-zinc-300">{copy}</p>
   </motion.div>
  );

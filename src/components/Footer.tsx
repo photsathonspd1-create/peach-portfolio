@@ -27,9 +27,9 @@ export default function Footer() {
        <span>Peach</span>
       </a>
       <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
-       Building precise, fast, unforgettable interfaces.
+       AI Workflow Builder — Automation, Content Systems & Electronics
        <br />
-       PHOTSATHON KUMTAEW — Frontend · AI · Motion
+       PHOTSATHON KUMTAEW
       </p>
      </motion.div>
 

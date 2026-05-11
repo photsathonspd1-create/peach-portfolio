@@ -63,13 +63,23 @@
 - [x] Next.js 15 + React 19 + Tailwind v4 + TypeScript strict
 - [x] 3D Scene (Three.js) — wireframe icosahedron, octahedron, torus, rings, particles
 - [x] Framer Motion animations (all with reduced-motion support)
-- [x] "What I'm doing now" section
-- [x] Interactive skills section (hover/focus/click)
-- [x] Contact section with email + GitHub
+- [x] "What I'm doing now" section (real content: ACEX AI, n8n, LangChain)
+- [x] Interactive skills section (hover/focus/click) — 6 core skills
+- [x] Contact section with email, phone, GitHub, Instagram
 - [x] Footer with nav + back-to-top
 - [x] Custom SVG favicon + OG image (1200x630)
 - [x] Open Graph + Twitter Card metadata
-- [x] `lang="th"` + accessibility improvements
+- [x] `lang="en"` + accessibility improvements
 - [x] Loading skeleton for 3D scene
-- [x] Download CV button
+- [x] Error boundary for 3D scene
 - [x] `suppressHydrationWarning` for browser extensions
+- [x] ESLint config with FlatCompat bridge
+- [x] Real personal content from resume (all sections)
+- [x] Hero: AI Workflow Builder, Thai description
+- [x] Projects: ACEX AI, AI Content, System & Automation, HW+SW
+- [x] Electronics & Embedded section (5 hardware skills)
+- [x] Experience section (3 columns)
+- [x] Education section (GPAX 3.37, ปี 2564)
+- [x] Language bars (TH 100%, EN 60%)
+- [x] Strengths section (5 items)
+- [x] Tools & Technologies (4 categories)

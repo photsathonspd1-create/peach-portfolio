@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
@@ -10,6 +11,7 @@ import {
   BriefcaseBusiness,
   Code2,
   Cpu,
+  Download,
   FolderGit2,
   Layers3,
   Mail,
@@ -19,6 +21,12 @@ import {
   TerminalSquare,
   Zap,
 } from "lucide-react";
+import NowSection from "@/components/NowSection";
+
+const Scene3D = dynamic(() => import("@/components/Scene3D"), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 -z-10" />,
+});
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -117,21 +125,15 @@ const skills = [
 const contactLinks = [
   {
     label: "Email",
-    value: "hello@peach.dev",
-    href: "mailto:hello@peach.dev",
+    value: "acex.peachwork@gmail.com",
+    href: "mailto:acex.peachwork@gmail.com",
     icon: Mail,
   },
   {
     label: "GitHub",
-    value: "@peach",
-    href: "https://github.com/peach",
+    value: "@photsathonspd1-create",
+    href: "https://github.com/photsathonspd1-create",
     icon: FolderGit2,
-  },
-  {
-    label: "LinkedIn",
-    value: "Phasathorn Khumthaeo",
-    href: "https://www.linkedin.com/in/phasathorn-khumthaeo",
-    icon: BriefcaseBusiness,
   },
 ];
 
@@ -166,6 +168,8 @@ export default function Home() {
     <main className="min-h-screen overflow-hidden bg-[#05070d] text-zinc-100">
       <Hero shouldReduceMotion={shouldReduceMotion} />
 
+      <NowSection />
+
       <section
         id="projects"
         className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
@@ -173,7 +177,7 @@ export default function Home() {
         <SectionIntro
           eyebrow="Selected projects"
           title="Bento-built systems with sharp surfaces."
-          copy="Command-center work across automation, interface polish, and research systems - built around clarity, speed, and technical presence."
+          copy="Command-center work across automation, interface polish, and research systems — built around clarity, speed, and technical presence."
         />
 
         <motion.div
@@ -234,7 +238,7 @@ export default function Home() {
                     <h3 className="mt-3 max-w-sm text-2xl font-semibold text-white">
                       {project.name}
                     </h3>
-                    <p className="mt-4 max-w-md text-sm leading-6 text-zinc-400">
+                    <p className="mt-4 max-w-md text-sm leading-6 text-zinc-300">
                       {project.summary}
                     </p>
                   </div>
@@ -248,9 +252,6 @@ export default function Home() {
                         <p className="mt-1 text-xs uppercase text-zinc-500">
                           {project.metricLabel}
                         </p>
-                      </div>
-                      <div className="h-12 w-28 rounded-lg bg-[linear-gradient(90deg,rgba(88,225,255,0.18),rgba(255,132,98,0.16),rgba(135,255,190,0.14))]">
-                        <div className="h-full w-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)] opacity-50" />
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -320,7 +321,7 @@ export default function Home() {
                     <MousePointer2 className="h-4 w-4 text-zinc-500 opacity-0 transition-opacity group-hover:opacity-100" />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold">{skill.name}</h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-400">
+                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-300">
                     {skill.detail}
                   </p>
                 </motion.button>
@@ -389,21 +390,30 @@ export default function Home() {
             <h2 className="mt-4 max-w-3xl text-4xl font-semibold text-white sm:text-5xl">
               Build the next precise, fast, unforgettable interface.
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-zinc-400">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300">
               Peach is presented here as a calm technical operator: Thai name
               forward, global-ready identity, and a portfolio system designed
               for serious product conversations.
             </p>
-            <a
-              href="mailto:hello@peach.dev"
-              className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#05070d] transition hover:bg-[#d9faff] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
-            >
-              <Mail className="h-4 w-4" aria-hidden="true" />
-              Start a conversation
-            </a>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="mailto:acex.peachwork@gmail.com"
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#05070d] transition hover:bg-[#d9faff] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
+              >
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                Start a conversation
+              </a>
+              <a
+                href="#projects"
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/[0.12] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Download CV
+              </a>
+            </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {contactLinks.map((link) => {
               const Icon = link.icon;
               return (
@@ -443,7 +453,7 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
     <section className="relative isolate min-h-[90svh] overflow-hidden bg-[#05070d] px-5 pt-5 text-white sm:px-8 lg:px-10">
       <Image
         src="/peach-hero-art.png"
-        alt=""
+        alt="Abstract geometric artwork — Peach portfolio hero illustration"
         fill
         priority
         sizes="100vw"
@@ -451,6 +461,8 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
       />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#05070d_0%,rgba(5,7,13,0.84)_36%,rgba(5,7,13,0.34)_100%)]" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(5,7,13,0)_0%,#05070d_94%)]" />
+
+      <Scene3D />
 
       <motion.header
         initial={{ opacity: 0, y: -16 }}
@@ -468,7 +480,7 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
           <span className="hidden sm:inline">Peach / ท่านพีช</span>
         </a>
         <nav className="flex items-center gap-2 text-sm text-zinc-300">
-          {["projects", "skills", "contact"].map((navItem) => (
+          {["now", "projects", "skills", "contact"].map((navItem) => (
             <a
               key={navItem}
               href={`#${navItem}`}
@@ -520,7 +532,7 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
           </motion.div>
           <motion.p
             variants={item}
-            className="mt-7 max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg"
+            className="mt-7 max-w-2xl text-base leading-7 text-zinc-200 sm:text-lg"
           >
             A sleek personal portfolio for a builder who blends sharp product
             taste, technical execution, AI systems, and motion-rich digital
@@ -605,7 +617,7 @@ function SectionIntro({
       <h2 className="mt-4 text-3xl font-semibold text-white sm:text-5xl">
         {title}
       </h2>
-      <p className="mt-5 text-base leading-8 text-zinc-400">{copy}</p>
+      <p className="mt-5 text-base leading-7 text-zinc-300">{copy}</p>
     </motion.div>
   );
 }

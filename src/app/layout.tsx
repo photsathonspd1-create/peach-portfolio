@@ -15,7 +15,32 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Peach | พสธร คุ้มแถว",
   description:
-    "A sleek dark tech portfolio for Peach, also known as Phasathorn Khumthaeo and ท่านพีช.",
+    "Portfolio ของ Peach (พสธร คุ้มแถว) — Frontend architecture, AI integration, motion systems, and polished digital experiences.",
+  openGraph: {
+    title: "Peach | พสธร คุ้มแถว",
+    description:
+      "Builder who blends sharp product taste, technical execution, AI systems, and motion-rich digital experiences.",
+    url: "https://peach.dev",
+    siteName: "Peach Portfolio",
+    locale: "th_TH",
+    type: "website",
+    images: [
+      {
+        url: "/peach-hero-art.png",
+        width: 1400,
+        height: 1000,
+        alt: "Peach Portfolio — abstract geometric hero art",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Peach | พสธร คุ้มแถว",
+    description:
+      "Builder who blends sharp product taste, technical execution, AI systems, and motion-rich digital experiences.",
+    images: ["/peach-hero-art.png"],
+  },
+  metadataBase: new URL("https://peach.dev"),
 };
 
 export default function RootLayout({
@@ -24,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="th" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );

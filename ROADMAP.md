@@ -8,7 +8,7 @@
 
 - [ ] **Smooth page loading / route transitions** — fade-in ตอนเปลี่ยน section, ไม่กระพริบ
 - [ ] **Scroll progress indicator** — bar ด้านบนบอกว่าอ่านถึงไหนแล้ว
-- [ ] **Animated counters** — ตัวเลข stats นับขึ้นตอน scroll เข้า viewport
+- [x] **Animated counters** — ตัวเลขนับขึ้นตอน scroll เข้า viewport ✅ (BeforeAfter.tsx)
 - [ ] **Project detail modal/page** — คลิก project แล้วเห็นรายละเอียด: screenshots, tech stack breakdown, role, challenges, results
 - [ ] **Testimonials / endorsements** — quote จากคนที่เคยร่วมงาน พร้อม avatar + role
 - [ ] **GitHub contribution graph** — embed แสดง activity จริง
@@ -19,7 +19,7 @@
 
 ## 🟡 Should-Have (ยกระดับจากกลาง → โปร)
 
-- [ ] **Cursor spotlight effect** — gradient glow ตามเมาส์บน hero
+- [x] **Custom cursor effect** — glowing dot + trail + hover expand ✅ (CustomCursor.tsx)
 - [ ] **Parallax layers** — background เคลื่อนช้ากว่า foreground ตอน scroll
 - [ ] **Staggered text reveal** — heading แต่ละคำ fade in ทีละตัว
 - [ ] **Magnetic buttons** — ปุ่มดูดเมาส์ตอน hover
@@ -32,7 +32,7 @@
 
 ## 🟢 Nice-to-Have (wow factor)
 
-- [ ] **Terminal-style about section** — แสดง bio เป็น command line interface
+- [x] **Terminal-style hero section** — typewriter animation 5 บรรทัด ✅ (TerminalHero.tsx)
 - [ ] **Easter egg** — Konami code หรือ hidden interaction
 - [ ] **Sound effects** — subtle click/hover sounds (ปิดได้)
 - [ ] **Keyboard navigation** — `j/k` scroll, `/` focus search

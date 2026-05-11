@@ -2,6 +2,36 @@
 
 > Last updated: 2026-05-11 by OpenClaw agent
 
+## ⚡ Quick Status (Read This First)
+
+**Build:** ✅ passes | **Lint:** ✅ passes | **Deploy:** ❌ not yet (run `npx vercel`)
+
+**What's done (127 items):**
+- Full portfolio with real personal content (TH + EN)
+- 3D scene (Three.js), Framer Motion animations, error boundary
+- 12 sections: Hero (terminal typewriter), Now, ACEX AI Demo, Projects, Before/After Impact, Skills (interactive), Skills Radar (recharts), Electronics, Experience, Education, Tools, Contact
+- 6 new interactive features: Terminal Hero, ACEX Demo, Before/After, Radar Chart, Floating CTA, Custom Cursor
+- Footer, metadata, OG cards, favicon, accessibility
+
+**What's NOT done yet (see ROADMAP.md):**
+- Vercel deployment
+- Resume PDF (`public/resume.pdf`)
+- Scroll progress bar, smooth scroll snap
+- Project detail modals
+- PWA manifest, sitemap, JSON-LD, security headers
+- Lighthouse optimization
+
+**Key files to know:**
+- `src/app/page.tsx` — main page, all sections + component imports
+- `src/components/` — 9 component files (Scene3D, NowSection, Footer, ErrorBoundary, TerminalHero, AcexDemo, BeforeAfter, SkillsRadar, FloatingCTA, CustomCursor)
+- `src/app/layout.tsx` — metadata, fonts, lang="en"
+- `HANDOFF.md` — this file (full details below)
+- `ROADMAP.md` — feature backlog
+
+**Stack:** Next.js 15.3.2 · React 19 · Tailwind v4 · Framer Motion · Three.js · Recharts · Lucide Icons
+
+---
+
 ## Project Overview
 
 Personal portfolio for **Peach (พสธร คุ้มแถว / Photsathon Kumtaew)**.

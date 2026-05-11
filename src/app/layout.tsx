@@ -54,6 +54,22 @@ export default function RootLayout({
 }>) {
  return (
   <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+   <head>
+    <script
+     type="application/ld+json"
+     dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+       "@context": "https://schema.org",
+       "@type": "Person",
+       "name": "Photsathon Kumtaew",
+       "jobTitle": "AI Workflow Builder",
+       "email": "photsathon.spd1@gmail.com",
+       "url": "https://peach-portfolio.vercel.app",
+       "sameAs": ["https://github.com/photsathonspd1-create"],
+      }),
+     }}
+    />
+   </head>
    <body suppressHydrationWarning>{children}</body>
   </html>
  );

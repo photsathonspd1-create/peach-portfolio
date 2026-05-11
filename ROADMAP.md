@@ -7,7 +7,7 @@
 ## 🔴 Must-Have (portfolio มือโปรต้องมี)
 
 - [ ] **Smooth page loading / route transitions** — fade-in ตอนเปลี่ยน section, ไม่กระพริบ
-- [ ] **Scroll progress indicator** — bar ด้านบนบอกว่าอ่านถึงไหนแล้ว
+- [x] **Scroll progress indicator** — bar ด้านบนบอกว่าอ่านถึงไหนแล้ว ✅ (ScrollProgress.tsx)
 - [x] **Animated counters** — ตัวเลขนับขึ้นตอน scroll เข้า viewport ✅ (BeforeAfter.tsx)
 - [ ] **Project detail modal/page** — คลิก project แล้วเห็นรายละเอียด: screenshots, tech stack breakdown, role, challenges, results
 - [ ] **Testimonials / endorsements** — quote จากคนที่เคยร่วมงาน พร้อม avatar + role
@@ -21,13 +21,13 @@
 
 - [x] **Custom cursor effect** — glowing dot + trail + hover expand ✅ (CustomCursor.tsx)
 - [ ] **Parallax layers** — background เคลื่อนช้ากว่า foreground ตอน scroll
-- [ ] **Staggered text reveal** — heading แต่ละคำ fade in ทีละตัว
+- [x] **Staggered text reveal** — heading แต่ละคำ fade in ทีละตัว ✅ (SectionIntro in page.tsx)
 - [ ] **Magnetic buttons** — ปุ่มดูดเมาส์ตอน hover
-- [ ] **Tech stack marquee** — scrolling ticker ของ icon technologies
+- [x] **Tech stack marquee** — scrolling ticker ของ icon technologies ✅ (TechMarquee.tsx)
 - [ ] **Bento grid stats** — แสดง stats แบบ bento layout (years exp, projects count, etc.)
 - [ ] **Animated background mesh** — gradient mesh ขยับเบาๆ ด้านหลัง
 - [ ] **Image gallery / lightbox** — สำหรับ project screenshots
-- [ ] **Copy email on click** — คลิก email แล้วคัดลอก + toast "Copied!"
+- [x] **Copy email on click** — คลิก email แล้วคัดลอก + toast "Copied!" ✅ (page.tsx contact section)
 - [ ] **Status page indicator** — แสดง availability (Open to work / Busy)
 
 ## 🟢 Nice-to-Have (wow factor)
@@ -47,8 +47,8 @@
 
 - [ ] **Lighthouse 90+ ทุก category** — Performance, A11y, Best Practices, SEO
 - [ ] **PWA manifest** — install ได้บนมือถือ
-- [ ] **Sitemap + robots.txt** — SEO basics
-- [ ] **Structured data (JSON-LD)** — Person schema for Google
+- [x] **Sitemap + robots.txt** — SEO basics ✅ (public/sitemap.xml, public/robots.txt)
+- [x] **Structured data (JSON-LD)** — Person schema for Google ✅ (layout.tsx)
 - [ ] **Image optimization** — WebP/AVIF, lazy loading, srcset
 - [ ] **Font subsetting** — โหลดเฉพาะ glyphs ที่ใช้
 - [ ] **Bundle analysis** — ตรวจ JS size ไม่ให้เกิน 150kb

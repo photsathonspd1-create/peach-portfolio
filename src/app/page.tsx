@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback, useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
  ArrowUpRight,
@@ -35,6 +35,8 @@ import BeforeAfter from "@/components/BeforeAfter";
 import SkillsRadar from "@/components/SkillsRadar";
 import FloatingCTA from "@/components/FloatingCTA";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
+import TechMarquee from "@/components/TechMarquee";
 
 const Scene3D = dynamic(() => import("@/components/Scene3D"), {
  ssr: false,
@@ -255,12 +257,14 @@ const item = {
 export default function Home() {
  const [activeSkill, setActiveSkill] = useState(skills[0]);
  const shouldReduceMotion = useReducedMotion();
+ const { visible: toastVisible, copyEmail } = EmailToast();
 
  const activeSkillIcon = useMemo(() => activeSkill.icon, [activeSkill]);
  const ActiveIcon = activeSkillIcon;
 
  return (
   <main className="min-h-screen overflow-hidden bg-[#05070d] text-zinc-100">
+   <ScrollProgress />
    <Hero shouldReduceMotion={shouldReduceMotion} />
 
    <NowSection />
@@ -677,6 +681,8 @@ export default function Home() {
     </motion.div>
    </section>
 
+   <TechMarquee />
+
    {/* Contact */}
    <section
     id="contact"
@@ -726,12 +732,14 @@ export default function Home() {
      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
       {contactLinks.map((link) => {
        const Icon = link.icon;
+       const isEmail = link.label === "Email";
        return (
         <a
          key={link.label}
          href={link.href}
          target={link.href.startsWith("http") ? "_blank" : undefined}
          rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
+         onClick={isEmail ? (e) => { e.preventDefault(); copyEmail(); } : undefined}
          className="group rounded-lg border border-white/10 bg-[#0b101a] p-5 transition duration-300 hover:border-[#58e1ff]/50 hover:bg-[#10202b]"
         >
          <div className="flex items-center justify-between gap-4">
@@ -747,6 +755,13 @@ export default function Home() {
       })}
      </div>
     </motion.div>
+
+    {/* Toast */}
+    {toastVisible && (
+     <div className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2 animate-[fadeInUp_0.3s_ease-out] rounded-lg border border-[#87ffbe]/30 bg-[#0b101a] px-5 py-3 text-sm font-medium text-[#87ffbe] shadow-lg shadow-[#87ffbe]/10">
+      คัดลอกแล้ว ✓
+     </div>
+    )}
    </section>
    <Footer />
    <FloatingCTA />
@@ -780,9 +795,13 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
     className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4"
    >
     <a href="#top" className="flex items-center gap-3 text-sm font-semibold text-white">
-     <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/[0.06]">
-      P
-     </span>
+     <Image
+      src="/logo.png"
+      alt="Peach logo"
+      width={36}
+      height={36}
+      className="rounded-lg"
+     />
      <span className="hidden sm:inline">Peach</span>
     </a>
     <nav className="flex items-center gap-2 text-sm text-zinc-300">
@@ -816,9 +835,11 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
      </motion.p>
      <motion.h1
       variants={item}
-      className="mt-4 max-w-6xl break-words text-[clamp(3.25rem,11vw,8.8rem)] font-semibold leading-[0.95] text-white"
+      className="mt-4 max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl"
      >
-      AI Automation · Content Systems · Electronics
+      AI Automation
+      <br />
+      <span className="text-zinc-400">Content Systems · Electronics</span>
      </motion.h1>
      <motion.div
       variants={item}
@@ -894,6 +915,8 @@ function SectionIntro({
  title: string;
  copy: string;
 }) {
+ const words = title.split(" ");
+
  return (
   <motion.div
    initial={{ opacity: 0, y: 20 }}
@@ -903,8 +926,46 @@ function SectionIntro({
    className="max-w-3xl"
   >
    <p className="text-sm font-medium uppercase text-[#58e1ff]">{eyebrow}</p>
-   <h2 className="mt-4 text-3xl font-semibold text-white sm:text-5xl">{title}</h2>
+   <h2 className="mt-4 text-3xl font-semibold text-white sm:text-5xl">
+    {words.map((word, i) => (
+     <motion.span
+      key={i}
+      className="mr-[0.3em] inline-block"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+       duration: 0.4,
+       delay: i * 0.05,
+       ease: smoothEase,
+      }}
+     >
+      {word}
+     </motion.span>
+    ))}
+   </h2>
    <p className="mt-5 text-base leading-7 text-zinc-300">{copy}</p>
   </motion.div>
  );
+}
+
+function EmailToast() {
+ const [visible, setVisible] = useState(false);
+ const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+ const copyEmail = useCallback(() => {
+  navigator.clipboard.writeText("acex.peachwork@gmail.com").then(() => {
+   if (timeoutRef.current) clearTimeout(timeoutRef.current);
+   setVisible(true);
+   timeoutRef.current = setTimeout(() => setVisible(false), 2000);
+  });
+ }, []);
+
+ useEffect(() => {
+  return () => {
+   if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+ }, []);
+
+ return { visible, copyEmail };
 }

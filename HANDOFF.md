@@ -1,30 +1,33 @@
 # 🍑 Peach Portfolio — Agent Handoff
 
-> Last updated: 2026-05-11 by OpenClaw agent
+> Last updated: 2026-05-11 by OpenClaw agent (Round 3)
 
 ## ⚡ Quick Status (Read This First)
 
 **Build:** ✅ passes | **Lint:** ✅ passes | **Deploy:** ❌ not yet (run `npx vercel`)
 
-**What's done (127 items):**
+**What's done (132 items):**
 - Full portfolio with real personal content (TH + EN)
 - 3D scene (Three.js), Framer Motion animations, error boundary
-- 12 sections: Hero (terminal typewriter), Now, ACEX AI Demo, Projects, Before/After Impact, Skills (interactive), Skills Radar (recharts), Electronics, Experience, Education, Tools, Contact
-- 6 new interactive features: Terminal Hero, ACEX Demo, Before/After, Radar Chart, Floating CTA, Custom Cursor
+- 12 sections: Hero (terminal typewriter), Now, ACEX AI Demo, Projects, Before/After Impact, Skills (interactive), Skills Radar (recharts), Electronics, Experience, Education, Tools, Tech Marquee, Contact
+- 8 interactive features: Terminal Hero, ACEX Demo, Before/After, Radar Chart, Floating CTA, Custom Cursor, Scroll Progress, Tech Marquee
 - Footer, metadata, OG cards, favicon, accessibility
+- Copy email on click + toast, staggered text reveal on headings
+- SEO: sitemap.xml, robots.txt, JSON-LD Person schema
+- Logo image (public/logo.png) replacing text "P" in header
 
 **What's NOT done yet (see ROADMAP.md):**
-- Vercel deployment
+- Vercel deployment (run `npx vercel`)
 - Resume PDF (`public/resume.pdf`)
-- Scroll progress bar, smooth scroll snap
+- Smooth scroll snap
 - Project detail modals
-- PWA manifest, sitemap, JSON-LD, security headers
+- PWA manifest, security headers
 - Lighthouse optimization
 
 **Key files to know:**
 - `src/app/page.tsx` — main page, all sections + component imports
-- `src/components/` — 9 component files (Scene3D, NowSection, Footer, ErrorBoundary, TerminalHero, AcexDemo, BeforeAfter, SkillsRadar, FloatingCTA, CustomCursor)
-- `src/app/layout.tsx` — metadata, fonts, lang="en"
+- `src/components/` — 11 component files (Scene3D, NowSection, Footer, ErrorBoundary, TerminalHero, AcexDemo, BeforeAfter, SkillsRadar, FloatingCTA, CustomCursor, ScrollProgress, TechMarquee)
+- `src/app/layout.tsx` — metadata, fonts, lang="en", JSON-LD
 - `HANDOFF.md` — this file (full details below)
 - `ROADMAP.md` — feature backlog
 
@@ -352,3 +355,80 @@ Route (app)                    Size      First Load JS
 └ ○ /_not-found               986 B     103 kB
 + First Load JS shared all    102 kB
 ```
+
+---
+
+## ✅ Features Added (2026-05-11 — Round 3)
+
+### Feature 7: Scroll Progress Bar (`src/components/ScrollProgress.tsx`)
+- [x] Fixed bar at very top of page (z-50)
+- [x] Width grows 0% → 100% as user scrolls
+- [x] Gradient: cyan (#58e1ff) → peach (#ff8462)
+- [x] Height: 3px
+- [x] Uses window.scrollY / document.documentElement.scrollHeight
+- [x] Smooth transition (150ms ease-out)
+- [x] Added to Home component in page.tsx
+
+### Feature 8: Tech Stack Marquee (`src/components/TechMarquee.tsx`)
+- [x] Horizontal scrolling ticker between Tools and Contact sections
+- [x] 16 tool chips: ChatGPT, Claude, n8n, Make, Zapier, Arduino, ESP32, Raspberry Pi, Python, JavaScript, LangChain, OpenAI API, Notion, GitHub, Tailwind, Next.js
+- [x] Auto-scroll left, seamless loop (items doubled)
+- [x] Pause on hover (CSS animation-play-state)
+- [x] Fade edges (gradient masks on left/right)
+- [x] Pure CSS animation (@keyframes marquee, 30s linear infinite)
+- [x] "Tech Stack" label above (violet accent)
+
+### Feature 9: Copy Email on Click + Toast
+- [x] Clicking email in Contact section copies to clipboard
+- [x] Toast: "คัดลอกแล้ว ✓" at bottom center
+- [x] Color: mint (#87ffbe) text on dark background
+- [x] Auto-dismiss after 2 seconds
+- [x] fadeInUp animation (custom @keyframes)
+- [x] No external library — useState + setTimeout + useRef
+
+### Feature 10: Staggered Text Reveal
+- [x] Section headings (h2) animate word by word on viewport entry
+- [x] Text split into spans, each with 0.05s stagger delay
+- [x] Uses Framer Motion variants (opacity: 0→1, y: 16→0)
+- [x] Applied to all SectionIntro instances (Projects, Skills, Electronics, Experience, Tools, etc.)
+- [x] Respects prefers-reduced-motion
+
+### Feature 11: Animated Counters (already existed)
+- [x] BeforeAfter.tsx already had IntersectionObserver-based counting
+- [x] Duration: 1.2s, ease-out cubic (1 - (1-t)^3)
+- [x] Numbers: 83%, 96%, 100%
+- [x] No changes needed — marked complete
+
+### PRIORITY 3 — SEO & Technical
+- [x] `public/sitemap.xml` with Vercel URL
+- [x] `public/robots.txt` allowing all crawlers
+- [x] JSON-LD Person schema in layout.tsx (name, jobTitle, email, url, sameAs)
+
+### Logo Update
+- [x] `public/logo.png` — user's custom logo downloaded
+- [x] Header: replaced text "P" with `<Image src="/logo.png" />`
+- [x] Footer still uses text "P" (not updated — consistent with smaller footer context)
+
+### Build Status (Round 3)
+```
+Route (app)                    Size      First Load JS
+┌ ○ /                         157 kB    259 kB
+└ ○ /_not-found               986 B     103 kB
++ First Load JS shared all    102 kB
+
+✓ Compiled successfully
+✓ Linting passed
+✓ TypeScript passed
+✓ Static pages generated (5/5)
+```
+
+### Files Added/Modified (Round 3)
+- **Added:** `src/components/ScrollProgress.tsx`
+- **Added:** `src/components/TechMarquee.tsx`
+- **Added:** `public/logo.png`
+- **Added:** `public/sitemap.xml`
+- **Added:** `public/robots.txt`
+- **Modified:** `src/app/page.tsx` (imports, ScrollProgress, TechMarquee, EmailToast, staggered SectionIntro, logo in header)
+- **Modified:** `src/app/layout.tsx` (JSON-LD Person schema)
+- **Modified:** `src/app/globals.css` (@keyframes marquee, @keyframes fadeInUp)
+- **Modified:** `HANDOFF.md` (this file)

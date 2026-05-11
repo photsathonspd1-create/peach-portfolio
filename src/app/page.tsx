@@ -37,6 +37,7 @@ import FloatingCTA from "@/components/FloatingCTA";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import TechMarquee from "@/components/TechMarquee";
+import ViewerCounter from "@/components/ViewerCounter";
 import CircuitDemo from "@/components/CircuitDemo";
 import WorkflowDemo from "@/components/WorkflowDemo";
 import IotDemo from "@/components/IotDemo";
@@ -200,9 +201,13 @@ const experience = [
 
 const tools = {
  "AI / Automation": ["ChatGPT / Claude", "OpenAI API", "LangChain", "Make (Integromat)", "n8n", "Zapier"],
- Languages: ["Python", "JavaScript", "Arduino (C/C++)", "PlatformIO", "Bash", "JSON"],
+ "Frontend": ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5 / CSS3", "Framer Motion"],
+ "Backend": ["Node.js", "Express.js", "Python", "REST API", "GraphQL", "Prisma"],
+ "Database": ["PostgreSQL", "MongoDB", "MySQL", "Firebase", "Supabase", "Redis"],
+ "DevOps & Tools": ["Git / GitHub", "Docker", "Vercel", "Linux / Bash", "CI/CD", "AWS"],
+ Languages: ["TypeScript", "JavaScript", "Python", "Arduino (C/C++)", "Bash", "SQL"],
  "Hardware": ["Arduino", "ESP32", "Raspberry Pi", "Sensor", "รีเลย์", "I2C", "GPIO", "Relay", "Breadboard"],
- Productivity: ["Notion", "Google Workspace", "Airtable", "Slack", "Git / GitHub"],
+ Productivity: ["Notion", "Google Workspace", "Airtable", "Slack", "Figma", "Postman"],
 };
 
 const strengths = [
@@ -216,8 +221,8 @@ const strengths = [
 const contactLinks = [
  {
   label: "Email",
-  value: "photsathon.spd1@gmail.com",
-  href: "mailto:photsathon.spd1@gmail.com",
+  value: "acex.peachwork@gmail.com",
+  href: "mailto:acex.peachwork@gmail.com",
   icon: Mail,
  },
  {
@@ -233,10 +238,10 @@ const contactLinks = [
   icon: FolderGit2,
  },
  {
-  label: "Instagram",
-  value: "@peatz21",
-  href: "https://instagram.com/peatz21",
-  icon: Globe,
+  label: "LINE",
+  value: "peatz21",
+  href: "https://line.me/ti/p/~peatz21",
+  icon: MessageCircle,
  },
 ];
 
@@ -589,19 +594,15 @@ export default function Home() {
        <p className="text-sm font-medium uppercase text-[#ffd166]">Education</p>
       </div>
       <h3 className="mt-6 text-2xl font-semibold text-white">
-       วิทยาลัยการอาชีพอมก๋อย / มหาวิทยาลัยทักษิณ
+       วิทยาลัยการอาชีพนวมินทราชินีมุกดาหาร
       </h3>
       <p className="mt-3 text-base text-zinc-300">
-       คณะอิเล็กทรอนิกส์ / อิเล็กทรอนิกส์อุตสาหกรรม (ปริญญาโท)
+       สาขาอิเล็กทรอนิกส์อุตสาหกรรม (ปวส.2)
       </p>
       <div className="mt-6 flex items-center gap-6">
        <div>
-        <p className="text-3xl font-semibold text-white">3.37</p>
-        <p className="mt-1 text-xs text-zinc-500">GPAX</p>
-       </div>
-       <div>
-        <p className="text-3xl font-semibold text-white">2564</p>
-        <p className="mt-1 text-xs text-zinc-500">ปีที่สำเร็จ</p>
+        <p className="text-3xl font-semibold text-white">ปวส.2</p>
+        <p className="mt-1 text-xs text-zinc-500">ระดับการศึกษา</p>
        </div>
       </div>
      </div>
@@ -690,6 +691,135 @@ export default function Home() {
 
    <TechMarquee />
 
+   {/* Resume */}
+   <section
+    id="resume"
+    className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+   >
+    <SectionIntro
+     eyebrow="Resume"
+     title="เรซูเม่"
+     copy="สรุปประวัติการทำงาน ทักษะ และประสบการณ์ทั้งหมด"
+    />
+
+    <motion.div
+     initial={{ opacity: 0, y: 24 }}
+     whileInView={{ opacity: 1, y: 0 }}
+     viewport={{ once: true, margin: "-120px" }}
+     transition={{ duration: 0.7, ease: smoothEase }}
+     className="mt-10 grid gap-6 lg:grid-cols-[0.45fr_1fr]"
+    >
+     {/* Photo + Basic Info */}
+     <div className="flex flex-col items-center rounded-lg border border-white/10 bg-[#0b101a] p-6 sm:p-8">
+      <div className="relative h-48 w-48 overflow-hidden rounded-2xl border-2 border-[#58e1ff]/30">
+       <Image
+        src="/peach-resume.jpg"
+        alt="PHOTSATHON KUMTAEW — Profile photo"
+        fill
+        className="object-cover"
+       />
+      </div>
+      <h3 className="mt-6 text-2xl font-semibold text-white">PHOTSATHON KUMTAEW</h3>
+      <p className="mt-2 text-sm text-[#58e1ff]">AI Workflow Builder / Full Stack Developer</p>
+      <div className="mt-6 w-full space-y-3 border-t border-white/10 pt-6">
+       <div className="flex items-center gap-3 text-sm text-zinc-300">
+        <Mail className="h-4 w-4 text-[#ff8462]" />
+        acex.peachwork@gmail.com
+       </div>
+       <div className="flex items-center gap-3 text-sm text-zinc-300">
+        <Phone className="h-4 w-4 text-[#ff8462]" />
+        064-154-6355
+       </div>
+       <div className="flex items-center gap-3 text-sm text-zinc-300">
+        <MapPin className="h-4 w-4 text-[#ff8462]" />
+        ชลบุรี (แหลมฉบัง), ประเทศไทย
+       </div>
+       <div className="flex items-center gap-3 text-sm text-zinc-300">
+        <FolderGit2 className="h-4 w-4 text-[#ff8462]" />
+        github.com/photsathonspd1-create
+       </div>
+       <div className="flex items-center gap-3 text-sm text-zinc-300">
+        <MessageCircle className="h-4 w-4 text-[#ff8462]" />
+        LINE: peatz21
+       </div>
+      </div>
+     </div>
+
+     {/* Resume Details */}
+     <div className="space-y-6">
+      {/* Profile Summary */}
+      <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6">
+       <h4 className="text-sm font-medium uppercase text-[#58e1ff]">Profile Summary</h4>
+       <p className="mt-3 text-sm leading-7 text-zinc-300">
+        ผู้ที่มีความสนใจและเชี่ยวชาญในการออกแบบ Workflow โดยใช้ AI Tools หลากหลาย
+        ผสานความรู้ด้านอิเล็กทรอนิกส์และการเขียนโค้ด เพื่อสร้างระบบ Automation
+        ทั้งซอฟต์แวร์และฮาร์ดแวร์ ช่วยลดเวลาและเพิ่มประสิทธิภาพธุรกิจ
+        มีทักษะ Full Stack Development สามารถพัฒนา Web Application ได้ครบวงจร
+       </p>
+      </div>
+
+      {/* Education */}
+      <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6">
+       <h4 className="text-sm font-medium uppercase text-[#ffd166]">Education</h4>
+       <div className="mt-3">
+        <p className="text-base font-semibold text-white">วิทยาลัยการอาชีพนวมินทราชินีมุกดาหาร</p>
+        <p className="mt-1 text-sm text-zinc-400">สาขาอิเล็กทรอนิกส์อุตสาหกรรม (ปวส.2)</p>
+       </div>
+      </div>
+
+      {/* Skills */}
+      <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6">
+       <h4 className="text-sm font-medium uppercase text-[#87ffbe]">Technical Skills</h4>
+       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {[
+         "React / Next.js", "TypeScript", "Node.js", "Python",
+         "Tailwind CSS", "PostgreSQL", "MongoDB", "Docker",
+         "REST API / GraphQL", "Git / GitHub", "AI / Automation", "Arduino / ESP32",
+        ].map((skill) => (
+         <div
+          key={skill}
+          className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-center text-xs text-zinc-300"
+         >
+          {skill}
+         </div>
+        ))}
+       </div>
+      </div>
+
+      {/* Key Projects */}
+      <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6">
+       <h4 className="text-sm font-medium uppercase text-[#ffb49e]">Key Projects</h4>
+       <ul className="mt-4 space-y-3">
+        {[
+         { name: "ACEX AI", desc: "ระบบ Autonomous Workflow ด้วย Plan → Do → Check → Act" },
+         { name: "AI Content Automation", desc: "ระบบผลิตคอนเทนต์อัตโนมัติด้วย AI" },
+         { name: "Hardware + Software Integration", desc: "ผสาน AI เข้ากับ Arduino/ESP32/Raspberry Pi" },
+        ].map((proj) => (
+         <li key={proj.name} className="text-sm text-zinc-300">
+          <span className="font-semibold text-white">{proj.name}</span> — {proj.desc}
+         </li>
+        ))}
+       </ul>
+      </div>
+
+      {/* Strengths */}
+      <div className="rounded-lg border border-white/10 bg-[#0b101a] p-6">
+       <h4 className="text-sm font-medium uppercase text-[#a98bff]">Strengths</h4>
+       <div className="mt-4 flex flex-wrap gap-2">
+        {strengths.map((s) => (
+         <span
+          key={s}
+          className="rounded-lg border border-[#a98bff]/20 bg-[#a98bff]/10 px-3 py-2 text-xs text-zinc-300"
+         >
+          {s}
+         </span>
+        ))}
+       </div>
+      </div>
+     </div>
+    </motion.div>
+   </section>
+
    {/* Contact */}
    <section
     id="contact"
@@ -714,21 +844,19 @@ export default function Home() {
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
        <a
-        href="mailto:photsathon.spd1@gmail.com"
+        href="mailto:acex.peachwork@gmail.com"
         className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#05070d] transition hover:bg-[#d9faff] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
        >
         <Mail className="h-4 w-4" aria-hidden="true" />
         ส่งข้อความ
        </a>
-       <button
-        type="button"
-        disabled
-        title="Resume coming soon"
-        className="inline-flex min-h-12 cursor-not-allowed items-center justify-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-zinc-500 backdrop-blur transition focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
+       <a
+        href="#resume"
+        className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/[0.12] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
        >
         <Download className="h-4 w-4" aria-hidden="true" />
-        Resume coming soon
-       </button>
+        ดูเรซูเม่
+       </a>
       </div>
       <div className="mt-6 flex items-center gap-2 text-sm text-zinc-400">
        <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -773,6 +901,7 @@ export default function Home() {
    <Footer />
    <FloatingCTA />
    <CustomCursor />
+   <ViewerCounter />
   </main>
  );
 }
@@ -805,14 +934,14 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
      <Image
       src="/logo.png"
       alt="Peach logo"
-      width={36}
-      height={36}
-      className="rounded-lg"
+      width={56}
+      height={56}
+      className="rounded-xl"
      />
-     <span className="hidden sm:inline">Peach</span>
+     <span className="hidden text-lg sm:inline">Peach</span>
     </a>
-    <nav className="flex items-center gap-2 text-sm text-zinc-300">
-     {["now", "projects", "skills", "electronics", "experience", "education", "tools", "contact"].map((navItem) => (
+    <nav className="hidden items-center gap-2 text-sm text-zinc-300 sm:flex">
+     {["now", "projects", "skills", "electronics", "experience", "education", "resume", "tools", "contact"].map((navItem) => (
       <a
        key={navItem}
        href={`#${navItem}`}
@@ -961,7 +1090,7 @@ function EmailToast() {
  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
  const copyEmail = useCallback(() => {
-  navigator.clipboard.writeText("photsathon.spd1@gmail.com").then(() => {
+  navigator.clipboard.writeText("acex.peachwork@gmail.com").then(() => {
    if (timeoutRef.current) clearTimeout(timeoutRef.current);
    setVisible(true);
    timeoutRef.current = setTimeout(() => setVisible(false), 2000);

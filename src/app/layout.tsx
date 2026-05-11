@@ -17,8 +17,8 @@ export const metadata: Metadata = {
  description:
   "AI Workflow Builder — ออกแบบ Automation ด้วย AI Tools ผสาน Electronics และ System Design เพื่อสร้างระบบทำงานได้จริง",
  icons: {
-  icon: "/favicon.svg",
-  shortcut: "/favicon.ico",
+  icon: "/logo.png",
+  shortcut: "/logo.png",
  },
  openGraph: {
   title: "Peach | AI Workflow Builder — PHOTSATHON KUMTAEW",
@@ -63,7 +63,7 @@ export default function RootLayout({
        "@type": "Person",
        "name": "Photsathon Kumtaew",
        "jobTitle": "AI Workflow Builder",
-       "email": "photsathon.spd1@gmail.com",
+       "email": "acex.peachwork@gmail.com",
        "url": "https://peach-portfolio.vercel.app",
        "sameAs": ["https://github.com/photsathonspd1-create"],
       }),

@@ -32,25 +32,25 @@ const nowItems = [
   {
     icon: Zap,
     label: "Building",
-    value: "AI-powered portfolio systems",
+    value: "Peach Portfolio — 3D + motion-rich personal site",
     color: "#58e1ff",
   },
   {
     icon: Target,
     label: "Focus",
-    value: "Frontend architecture & motion design",
+    value: "Next.js 16, Three.js, Framer Motion systems",
     color: "#ff8462",
   },
   {
     icon: Coffee,
     label: "Learning",
-    value: "Three.js, WebGL, spatial interfaces",
+    value: "WebGL shaders, spatial UI, agentic workflows",
     color: "#87ffbe",
   },
   {
     icon: Sparkles,
     label: "Open to",
-    value: "Freelance projects & collaborations",
+    value: "Freelance projects & creative collaborations",
     color: "#a98bff",
   },
 ];

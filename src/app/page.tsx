@@ -22,10 +22,18 @@ import {
   Zap,
 } from "lucide-react";
 import NowSection from "@/components/NowSection";
+import Footer from "@/components/Footer";
 
 const Scene3D = dynamic(() => import("@/components/Scene3D"), {
   ssr: false,
-  loading: () => <div className="absolute inset-0 -z-10" />,
+  loading: () => (
+    <div className="absolute inset-0 -z-10 flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="h-16 w-16 animate-pulse rounded-full border border-white/10 bg-white/[0.04]" />
+        <div className="h-2 w-24 animate-pulse rounded-full bg-white/[0.06]" />
+      </div>
+    </div>
+  ),
 });
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -404,7 +412,7 @@ export default function Home() {
                 Start a conversation
               </a>
               <a
-                href="#projects"
+                href="/resume.pdf"
                 className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/[0.12] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
@@ -444,6 +452,7 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+      <Footer />
     </main>
   );
 }

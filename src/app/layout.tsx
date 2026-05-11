@@ -16,20 +16,24 @@ export const metadata: Metadata = {
   title: "Peach | พสธร คุ้มแถว",
   description:
     "Portfolio ของ Peach (พสธร คุ้มแถว) — Frontend architecture, AI integration, motion systems, and polished digital experiences.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: "Peach | พสธร คุ้มแถว",
     description:
       "Builder who blends sharp product taste, technical execution, AI systems, and motion-rich digital experiences.",
-    url: "https://peach.dev",
+    url: "https://peach-portfolio.vercel.app",
     siteName: "Peach Portfolio",
     locale: "th_TH",
     type: "website",
     images: [
       {
-        url: "/peach-hero-art.png",
-        width: 1400,
-        height: 1000,
-        alt: "Peach Portfolio — abstract geometric hero art",
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Peach — Frontend · AI · Motion Systems",
       },
     ],
   },
@@ -38,9 +42,9 @@ export const metadata: Metadata = {
     title: "Peach | พสธร คุ้มแถว",
     description:
       "Builder who blends sharp product taste, technical execution, AI systems, and motion-rich digital experiences.",
-    images: ["/peach-hero-art.png"],
+    images: ["/og.png"],
   },
-  metadataBase: new URL("https://peach.dev"),
+  metadataBase: new URL("https://peach-portfolio.vercel.app"),
 };
 
 export default function RootLayout({

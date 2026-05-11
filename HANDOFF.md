@@ -10,8 +10,8 @@
 |------|--------|
 | Build | ✅ passes (`npm run build`) |
 | Lint | ✅ passes |
-| Git | ✅ pushed to `master` |
-| Deploy | ❌ not yet — needs `npx vercel login` then `npx vercel --prod` |
+| Git | ✅ pushed to `master` (Next.js 15.5.18 — CVE-2025-66478 fixed) |
+| Deploy | ✅ live at https://peach-portfolio.vercel.app/ |
 
 ---
 

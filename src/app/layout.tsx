@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
- title: "Peach | AI Workflow Builder — PHOTSATHON KUMTAEW",
+ title: "Acex AI | AI Workflow Builder — PHOTSATHON KUMTAEW",
  description:
   "AI Workflow Builder — ออกแบบ Automation ด้วย AI Tools ผสาน Electronics และ System Design เพื่อสร้างระบบทำงานได้จริง",
  keywords: ["AI", "Automation", "Workflow", "Electronics", "Arduino", "ESP32", "Next.js", "Portfolio"],
@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   shortcut: "/logo.png",
  },
  openGraph: {
-  title: "Peach | AI Workflow Builder — PHOTSATHON KUMTAEW",
+  title: "Acex AI | AI Workflow Builder — PHOTSATHON KUMTAEW",
   description:
    "AI Workflow Builder — Automation, Content Systems & Electronics Integration",
   url: "https://peach-portfolio.vercel.app",
-  siteName: "Peach Portfolio",
+  siteName: "Acex AI Portfolio",
   locale: "th_TH",
   type: "website",
   images: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
  },
  twitter: {
   card: "summary_large_image",
-  title: "Peach | AI Workflow Builder — PHOTSATHON KUMTAEW",
+  title: "Acex AI | AI Workflow Builder — PHOTSATHON KUMTAEW",
   description:
    "AI Workflow Builder — Automation, Content Systems & Electronics Integration",
   images: ["/og.png"],

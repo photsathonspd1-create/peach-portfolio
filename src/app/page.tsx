@@ -548,9 +548,9 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
     transition={{ duration: 0.6, ease: smoothEase }}
     className="relative z-50 mx-auto flex w-full max-w-7xl items-center justify-between gap-4"
    >
-    <a href="#top" className="flex items-center gap-3 text-sm font-semibold text-white" aria-label="Peach — Home">
-     <Image src="/logo.png" alt="Peach logo" width={56} height={56} className="rounded-xl" />
-     <span className="hidden text-lg sm:inline">Peach</span>
+    <a href="#top" className="flex items-center gap-3 text-sm font-semibold text-white" aria-label="Acex AI — Home">
+     <Image src="/logo.png" alt="Acex AI logo" width={56} height={56} className="rounded-xl" />
+     <span className="hidden text-lg sm:inline">Acex AI</span>
     </a>
 
     {/* Desktop nav */}

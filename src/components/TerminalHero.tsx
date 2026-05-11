@@ -53,7 +53,7 @@ export default function TerminalHero() {
           <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
           <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
           <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-          <span className="ml-3 text-xs text-zinc-500">peach@acex ~ /workflow</span>
+          <span className="ml-3 text-xs text-zinc-500">acex@ai ~ /workflow</span>
         </div>
 
         {/* Terminal body */}

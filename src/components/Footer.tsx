@@ -22,9 +22,9 @@ export default function Footer() {
      >
       <a href="#top" className="flex items-center gap-3 text-sm font-semibold text-white">
        <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/[0.06]">
-        P
+        A
        </span>
-       <span>Peach</span>
+       <span>Acex AI</span>
       </a>
       <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
        AI Workflow Builder — Automation, Content Systems & Electronics

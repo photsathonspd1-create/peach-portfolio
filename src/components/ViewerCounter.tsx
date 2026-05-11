@@ -88,17 +88,7 @@ export default function ViewerCounter() {
   };
  }, []);
 
- // Simulate slight variation for visual appeal
- useEffect(() => {
-  if (!hasCounted) return;
-  const jitter = setInterval(() => {
-   setViewerCount((prev) => {
-    const variation = Math.random() > 0.5 ? 1 : 0;
-    return Math.max(1, prev + variation);
-   });
-  }, 8000);
-  return () => clearInterval(jitter);
- }, [hasCounted]);
+ // No fake jitter — keep the count honest
 
  return (
   <AnimatePresence>

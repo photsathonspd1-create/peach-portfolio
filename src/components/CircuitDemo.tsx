@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import MobileCanvasWrapper from "@/components/MobileCanvasWrapper";
 
 /* ── Types ── */
 interface Pin {
@@ -783,7 +784,8 @@ export default function CircuitDemo() {
           </div>
 
           {/* Canvas */}
-          <div ref={containerRef} className="flex-1 overflow-x-auto rounded-xl border border-white/10 bg-[#080c12]">
+          <MobileCanvasWrapper className="flex-1 border border-white/10 bg-[#080c12]">
+           <div ref={containerRef}>
             <canvas
               ref={canvasRef}
               onMouseDown={handleMouseDown}
@@ -793,7 +795,8 @@ export default function CircuitDemo() {
               className="block w-full cursor-crosshair"
               style={{ minWidth: 600 }}
             />
-          </div>
+           </div>
+          </MobileCanvasWrapper>
         </div>
 
         {/* Controls */}

@@ -211,8 +211,8 @@ const strengths = [
 const contactLinks = [
  {
   label: "Email",
-  value: "photsathon.spd1@gmail.com",
-  href: "mailto:photsathon.spd1@gmail.com",
+  value: "acex.peachwork@gmail.com",
+  href: "mailto:acex.peachwork@gmail.com",
   icon: Mail,
  },
  {
@@ -701,7 +701,7 @@ export default function Home() {
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
        <a
-        href="mailto:photsathon.spd1@gmail.com"
+        href="mailto:acex.peachwork@gmail.com"
         className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#05070d] transition hover:bg-[#d9faff] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
        >
         <Mail className="h-4 w-4" aria-hidden="true" />

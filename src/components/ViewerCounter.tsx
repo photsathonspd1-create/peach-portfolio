@@ -108,7 +108,7 @@ export default function ViewerCounter() {
      animate={{ opacity: 1, y: 0, scale: 1 }}
      exit={{ opacity: 0, y: 20, scale: 0.9 }}
      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-     className="fixed bottom-6 right-6 z-50"
+     className="fixed bottom-6 left-6 z-50"
     >
      <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#0b101a]/95 px-4 py-3 shadow-2xl shadow-black/40 backdrop-blur-xl">
       <div className="relative flex items-center justify-center">

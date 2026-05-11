@@ -40,11 +40,12 @@ export default function Footer() {
       transition={{ duration: 0.5, delay: 0.1, ease: smoothEase }}
       className="flex items-center gap-6"
      >
-      <div className="flex gap-3 text-sm text-zinc-500">
+      <div className="flex flex-wrap gap-3 text-sm text-zinc-500">
        {[
         { label: "Projects", href: "#projects" },
         { label: "Skills", href: "#skills" },
         { label: "Now", href: "#now" },
+        { label: "Experience", href: "#experience" },
         { label: "Contact", href: "#contact" },
        ].map((link) => (
         <a

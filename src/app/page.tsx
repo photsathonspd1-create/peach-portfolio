@@ -54,8 +54,15 @@ const Scene3D = dynamic(() => import("@/components/Scene3D"), {
  loading: () => (
   <div className="absolute inset-0 -z-10 flex items-center justify-center">
    <div className="flex flex-col items-center gap-4">
-    <div className="h-16 w-16 animate-pulse rounded-full border border-white/10 bg-white/[0.04]" />
-    <div className="h-2 w-24 animate-pulse rounded-full bg-white/[0.06]" />
+    <div className="relative">
+     <div className="h-16 w-16 animate-pulse rounded-full border border-[#58e1ff]/20 bg-[#58e1ff]/[0.04]" />
+     <div className="absolute inset-0 h-16 w-16 animate-ping rounded-full border border-[#58e1ff]/10" />
+    </div>
+    <div className="flex gap-1">
+     <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#58e1ff]/40 [animation-delay:0ms]" />
+     <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#58e1ff]/40 [animation-delay:150ms]" />
+     <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#58e1ff]/40 [animation-delay:300ms]" />
+    </div>
    </div>
   </div>
  ),
@@ -603,8 +610,8 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
       <span className="h-2 w-2 bg-[#87ffbe]" />AI Workflow Builder
      </motion.div>
      <motion.p variants={itemVariants} className="text-sm font-medium uppercase text-[#ffb49e]">{profile.name}</motion.p>
-     <motion.h1 variants={itemVariants} className="mt-4 max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-      AI Automation<br /><span className="text-zinc-400">Content Systems · Electronics</span>
+     <motion.h1 variants={itemVariants} className="mt-4 max-w-4xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+      AI Automation<br /><span className="bg-gradient-to-r from-[#58e1ff] via-[#a98bff] to-[#ff8462] bg-clip-text text-transparent">Content Systems · Electronics</span>
      </motion.h1>
      <motion.div variants={itemVariants} className="mt-5 flex flex-wrap items-center gap-3 text-xl font-medium text-zinc-200 sm:text-3xl">
       <span>{profile.handle}</span>

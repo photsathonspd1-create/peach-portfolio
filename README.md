@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍑 Peach Portfolio
+
+AI Workflow Builder — Portfolio ของ พสธร คุ้มแถว (PHOTSATHON KUMTAEW)
+
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS 4
+- **3D:** Three.js + React Three Fiber + Drei
+- **Animation:** Framer Motion
+- **Charts:** Recharts
+- **Icons:** Lucide React
+- **Language:** TypeScript
+- **Deploy:** Vercel
+
+## Features
+
+- 🎨 Dark theme with peach/coral accent colors
+- 🌐 Interactive 3D scene (Three.js)
+- ⚡ AI Workflow Builder demo (drag & drop nodes, connect, run)
+- 🔌 Circuit Simulator (build circuits, power on, see current flow)
+- 🌡️ IoT Sensor Dashboard (real-time simulation, relay control)
+- 📊 Skills Radar Chart (animated on scroll)
+- 📈 Before/After impact comparisons
+- 🖱️ Custom cursor with trail effect
+- 📱 Fully responsive (mobile + desktop)
+- ♿ Accessible (skip to content, aria labels, reduced motion)
+- 🔍 SEO optimized (OG tags, structured data, sitemap)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Sections
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Hero** — 3D scene + terminal animation
+2. **Now** — Current focus & availability
+3. **ACEX AI Demo** — Interactive Plan → Do → Check → Act workflow
+4. **Circuit Simulator** — Build & test electronic circuits
+5. **Workflow Builder** — Visual AI workflow editor
+6. **IoT Dashboard** — Real-time sensor monitoring
+7. **Projects** — Key projects showcase
+8. **Before/After** — Impact metrics
+9. **Skills** — Interactive skill cards + radar chart
+10. **Electronics** — Hardware & embedded skills
+11. **Experience** — Work experience
+12. **Education** — Academic background
+13. **Tools** — Tech stack overview
+14. **Resume** — Full resume section
+15. **Contact** — Contact information & links
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 PHOTSATHON KUMTAEW. All rights reserved.

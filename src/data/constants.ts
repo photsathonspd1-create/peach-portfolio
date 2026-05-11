@@ -12,7 +12,6 @@ import {
  Mail,
  Phone,
  FolderGit2,
- MapPin,
  Layers3,
  type LucideIcon,
 } from "lucide-react";

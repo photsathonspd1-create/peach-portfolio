@@ -16,6 +16,9 @@ export const metadata: Metadata = {
  title: "Peach | AI Workflow Builder — PHOTSATHON KUMTAEW",
  description:
   "AI Workflow Builder — ออกแบบ Automation ด้วย AI Tools ผสาน Electronics และ System Design เพื่อสร้างระบบทำงานได้จริง",
+ keywords: ["AI", "Automation", "Workflow", "Electronics", "Arduino", "ESP32", "Next.js", "Portfolio"],
+ authors: [{ name: "PHOTSATHON KUMTAEW" }],
+ creator: "PHOTSATHON KUMTAEW",
  icons: {
   icon: "/logo.png",
   shortcut: "/logo.png",
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
     url: "/og.png",
     width: 1200,
     height: 630,
-    alt: "Peach — Frontend · AI · Motion Systems",
+    alt: "Peach — AI Workflow Builder · Electronics · Automation",
    },
   ],
  },
@@ -43,6 +46,10 @@ export const metadata: Metadata = {
   description:
    "AI Workflow Builder — Automation, Content Systems & Electronics Integration",
   images: ["/og.png"],
+ },
+ robots: {
+  index: true,
+  follow: true,
  },
  metadataBase: new URL("https://peach-portfolio.vercel.app"),
 };
@@ -62,10 +69,32 @@ export default function RootLayout({
        "@context": "https://schema.org",
        "@type": "Person",
        "name": "Photsathon Kumtaew",
+       "alternateName": "Peach",
        "jobTitle": "AI Workflow Builder",
+       "description": "AI Workflow Builder — ออกแบบ Automation ด้วย AI Tools ผสาน Electronics และ System Design",
        "email": "acex.peachwork@gmail.com",
+       "telephone": "+66641546355",
        "url": "https://peach-portfolio.vercel.app",
-       "sameAs": ["https://github.com/photsathonspd1-create"],
+       "image": "https://peach-portfolio.vercel.app/og.png",
+       "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chonburi",
+        "addressCountry": "TH"
+       },
+       "sameAs": [
+        "https://github.com/photsathonspd1-create",
+        "https://line.me/ti/p/~peatz21"
+       ],
+       "knowsAbout": [
+        "AI Automation",
+        "Workflow Design",
+        "Electronics",
+        "Arduino",
+        "ESP32",
+        "Next.js",
+        "TypeScript",
+        "Python"
+       ]
       }),
      }}
     />

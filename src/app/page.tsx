@@ -29,6 +29,12 @@ import {
 import NowSection from "@/components/NowSection";
 import Footer from "@/components/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import TerminalHero from "@/components/TerminalHero";
+import AcexDemo from "@/components/AcexDemo";
+import BeforeAfter from "@/components/BeforeAfter";
+import SkillsRadar from "@/components/SkillsRadar";
+import FloatingCTA from "@/components/FloatingCTA";
+import CustomCursor from "@/components/CustomCursor";
 
 const Scene3D = dynamic(() => import("@/components/Scene3D"), {
  ssr: false,
@@ -259,6 +265,8 @@ export default function Home() {
 
    <NowSection />
 
+   <AcexDemo />
+
    {/* Projects */}
    <section
     id="projects"
@@ -355,6 +363,8 @@ export default function Home() {
      })}
     </motion.div>
    </section>
+
+   <BeforeAfter />
 
    {/* Skills */}
    <section
@@ -490,6 +500,8 @@ export default function Home() {
      })}
     </motion.div>
    </section>
+
+   <SkillsRadar />
 
    {/* Experience */}
    <section
@@ -737,6 +749,8 @@ export default function Home() {
     </motion.div>
    </section>
    <Footer />
+   <FloatingCTA />
+   <CustomCursor />
   </main>
  );
 }
@@ -758,6 +772,10 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
    <ErrorBoundary>
     <Scene3D />
    </ErrorBoundary>
+
+   <div className="relative z-10 mx-auto flex min-h-[60svh] items-center justify-center px-5">
+    <TerminalHero />
+   </div>
 
    <motion.header
     initial={{ opacity: 0, y: -16 }}

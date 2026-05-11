@@ -238,3 +238,87 @@ Route (app)                    Size      First Load JS
 ✓ TypeScript passed
 ✓ Static pages generated (5/5)
 ```
+
+---
+
+## ✅ Features Added (2026-05-11 — Round 2)
+
+### Feature 1: Terminal-Style Hero (`src/components/TerminalHero.tsx`)
+- [x] Dark terminal panel with macOS-style title bar (red/yellow/green dots)
+- [x] Typewriter animation — 5 lines typed sequentially
+- [x] Lines: Initializing → Profile → Role → Skills → Status
+- [x] Blinking cursor during typing
+- [x] Color-coded lines (cyan, green)
+- [x] CTA buttons appear after animation completes
+- [x] Integrated above the existing hero content
+
+### Feature 2: ACEX AI Interactive Demo (`src/components/AcexDemo.tsx`)
+- [x] Input box with Thai placeholder
+- [x] "เริ่ม Workflow" submit button
+- [x] 4-step animated process: PLAN → DO → CHECK → ACT
+- [x] Each step lights up with 1.2s delay
+- [x] Step cards with emoji icons and descriptions
+- [x] Progress bar on active step
+- [x] Glow effect on active card
+- [x] Success message after completion
+- [x] "ลองใหม่" reset button
+- [x] UI-only demo (no API calls)
+
+### Feature 3: Before vs After Automation Showcase (`src/components/BeforeAfter.tsx`)
+- [x] 3 comparison cards
+- [x] Card 1: Content creation 4h → 20min (83% saved)
+- [x] Card 2: Report 2h → 5min (96% saved)
+- [x] Card 3: Customer replies → AI Agent (100% saved)
+- [x] Before (gray) / After (green) split layout
+- [x] Arrow between sections
+- [x] Animated counting numbers (Intersection Observer)
+- [x] Eased animation curve (cubic)
+- [x] Responsive: stack on mobile, 3-col on desktop
+
+### Feature 4: Skills Radar Chart (`src/components/SkillsRadar.tsx`)
+- [x] Recharts RadarChart with 6 axes
+- [x] AI Workflow: 95, Prompt Engineering: 90, Automation: 92
+- [x] System Integration: 85, Electronics: 80, Data & Insight: 75
+- [x] Animated from 0 → target on scroll (Intersection Observer)
+- [x] Dark theme, cyan accent fill
+- [x] Legend with values below chart
+- [x] Responsive container
+
+### Feature 5: Floating CTA Button (`src/components/FloatingCTA.tsx`)
+- [x] Fixed bottom-right, always visible
+- [x] Pulse animation (expanding rings)
+- [x] Click opens popup with 2 contact options
+- [x] Email: photsathon.spd1@gmail.com (mailto)
+- [x] Phone: 064-154-6355 (tel)
+- [x] Close button (X icon)
+- [x] Smooth open/close animation
+
+### Feature 6: Custom Cursor Effect (`src/components/CustomCursor.tsx`)
+- [x] Small glowing dot follows mouse instantly
+- [x] Larger trail follows with 0.15 lerp delay
+- [x] Hovering interactive elements: cursor expands
+- [x] Trail becomes ring border on hover
+- [x] Hidden on touch devices (detected via ontouchstart)
+- [x] Only visible on lg+ screens
+- [x] Default cursor hidden on desktop
+- [x] Pure CSS + JS, no libraries
+
+### Integration
+- [x] All components imported in `src/app/page.tsx`
+- [x] TerminalHero: inside hero section, above header
+- [x] AcexDemo: after NowSection, before Projects
+- [x] BeforeAfter: after Projects, before Skills
+- [x] SkillsRadar: after Electronics, before Experience
+- [x] FloatingCTA: fixed position, bottom-right
+- [x] CustomCursor: global, all pages
+- [x] `recharts` package installed
+- [x] `npm run build` passes ✅
+- [x] ESLint passes ✅
+
+### Build Status (Round 2)
+```
+Route (app)                    Size      First Load JS
+┌ ○ /                         157 kB    258 kB
+└ ○ /_not-found               986 B     103 kB
++ First Load JS shared all    102 kB
+```

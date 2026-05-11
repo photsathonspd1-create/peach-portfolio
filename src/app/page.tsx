@@ -773,10 +773,6 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
     <Scene3D />
    </ErrorBoundary>
 
-   <div className="relative z-10 mx-auto flex min-h-[60svh] items-center justify-center px-5">
-    <TerminalHero />
-   </div>
-
    <motion.header
     initial={{ opacity: 0, y: -16 }}
     animate={{ opacity: 1, y: 0 }}
@@ -879,6 +875,11 @@ function Hero({ shouldReduceMotion }: { shouldReduceMotion: boolean | null }) {
       </motion.div>
      ))}
     </motion.div>
+   </div>
+
+   {/* Terminal Hero */}
+   <div className="relative z-10 mx-auto mt-8 w-full max-w-3xl px-5 pb-16 sm:px-8 lg:px-10 lg:pb-20">
+    <TerminalHero />
    </div>
   </section>
  );

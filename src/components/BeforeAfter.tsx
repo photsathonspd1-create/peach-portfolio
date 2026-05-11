@@ -25,48 +25,42 @@ const comparisons = [
   },
 ];
 
-function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
-  const [display, setDisplay] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
+export default function BeforeAfter() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [counts, setCounts] = useState([0, 0, 0]);
   const started = useRef(false);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = sectionRef.current;
     if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
           started.current = true;
-          const duration = 1200;
-          const start = performance.now();
+          const targets = comparisons.map((c) => c.saved);
+          const duration = 1500;
+          const startTime = performance.now();
 
           const tick = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1);
+            const progress = Math.min((now - startTime) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            setDisplay(Math.round(eased * value));
+            setCounts(targets.map((t) => Math.round(eased * t)));
             if (progress < 1) requestAnimationFrame(tick);
           };
           requestAnimationFrame(tick);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [value]);
+  }, []);
 
-  return (
-    <span ref={ref} className="tabular-nums">
-      {display}{suffix}
-    </span>
-  );
-}
-
-export default function BeforeAfter() {
   return (
     <section
+      ref={sectionRef}
       id="impact"
       className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
     >
@@ -121,8 +115,8 @@ export default function BeforeAfter() {
                 <TrendingDown className="h-4 w-4 text-[#28c840]" />
                 <span className="text-xs text-zinc-400">ประหยัด{card.metric}</span>
               </div>
-              <p className="text-2xl font-bold text-[#28c840]">
-                <AnimatedNumber value={card.saved} suffix="%" />
+              <p className="text-2xl font-bold text-[#28c840] tabular-nums">
+                {counts[i]}%
               </p>
             </div>
           </motion.div>

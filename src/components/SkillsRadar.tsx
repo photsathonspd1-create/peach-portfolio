@@ -21,26 +21,25 @@ const data = [
 ];
 
 export default function SkillsRadar() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const [animatedData, setAnimatedData] = useState(
     data.map((d) => ({ ...d, value: 0 }))
   );
+  const started = useRef(false);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = sectionRef.current;
     if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !visible) {
-          setVisible(true);
-          // Animate from 0 to target
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
           const duration = 1400;
-          const start = performance.now();
+          const startTime = performance.now();
 
           const tick = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1);
+            const progress = Math.min((now - startTime) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
             setAnimatedData(
               data.map((d) => ({
@@ -53,15 +52,16 @@ export default function SkillsRadar() {
           requestAnimationFrame(tick);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.3 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [visible]);
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       id="skills-radar"
       className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
     >
@@ -82,7 +82,6 @@ export default function SkillsRadar() {
       </motion.div>
 
       <motion.div
-        ref={ref}
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -116,13 +115,13 @@ export default function SkillsRadar() {
 
           {/* Legend */}
           <div className="mt-4 flex flex-wrap justify-center gap-4">
-            {data.map((d) => (
+            {data.map((d, i) => (
               <div key={d.skill} className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-[#58e1ff]" />
                 <span className="text-xs text-zinc-400">
                   {d.skill}:{" "}
                   <span className="font-semibold text-white">
-                    {visible ? d.value : 0}
+                    {animatedData[i].value}
                   </span>
                 </span>
               </div>

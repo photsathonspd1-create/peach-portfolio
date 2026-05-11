@@ -24,7 +24,7 @@ export default function FloatingCTA() {
             </div>
             <div className="p-2">
               <a
-                href="mailto:acex.peachwork@gmail.com"
+                href="mailto:photsathon.spd1@gmail.com"
                 className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm text-zinc-300 transition hover:bg-white/[0.06] hover:text-white"
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#58e1ff]/10 text-[#58e1ff]">
@@ -32,7 +32,7 @@ export default function FloatingCTA() {
                 </span>
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-xs text-zinc-500">acex.peachwork@gmail.com</p>
+                  <p className="text-xs text-zinc-500">photsathon.spd1@gmail.com</p>
                 </div>
               </a>
               <a

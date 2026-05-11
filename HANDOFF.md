@@ -1,6 +1,6 @@
 # 🍑 Peach Portfolio — Agent Handoff
 
-> Last updated: 2026-05-11 14:04 GMT+8 by OpenClaw agent
+> Last updated: 2026-05-11 14:35 GMT+8 by OpenClaw agent (Round 4 — bug fixes)
 
 ---
 
@@ -189,6 +189,33 @@ npm run dev        # Start dev server (Turbopack) → localhost:3000
 npm run build      # Production build ✅ passes
 npm run lint       # ESLint ✅ passes
 npx vercel --prod  # Deploy to Vercel (ต้อง login ก่อน)
+```
+
+---
+
+## ✅ Bug Fixes (2026-05-11 — Round 4)
+
+### BUG 1: Animated Counters Stuck at 0%
+- **Root cause:** IntersectionObserver on individual `<span>` elements with threshold 0.5 — too small to trigger
+- **Fix:** Moved observer to section-level `ref` with threshold 0.3; single animation drives all 3 counters
+- **File:** `src/components/BeforeAfter.tsx` — rewrote with section ref + shared state
+
+### BUG 2: Radar Chart Shows All Zeros
+- **Root cause:** Similar observer issue; legend used `visible` state but values from `animatedData`
+- **Fix:** Observer on section ref with threshold 0.3; legend reads `animatedData[i].value` directly
+- **File:** `src/components/SkillsRadar.tsx` — removed unused `visible` state, cleaner animation
+
+### BUG 3: Wrong Email Address
+- **Root cause:** Code used `acex.peachwork@gmail.com` instead of `photsathon.spd1@gmail.com`
+- **Fix:** Replaced all 7 instances across `page.tsx`, `FloatingCTA.tsx`, `layout.tsx`
+- **Files:** `src/app/page.tsx`, `src/components/FloatingCTA.tsx`
+
+### Build Status (Round 4)
+```
+✓ Compiled successfully
+✓ Linting passed (0 warnings)
+✓ TypeScript passed
+✓ Static pages generated (5/5)
 ```
 
 ---

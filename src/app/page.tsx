@@ -213,8 +213,8 @@ const strengths = [
 const contactLinks = [
  {
   label: "Email",
-  value: "acex.peachwork@gmail.com",
-  href: "mailto:acex.peachwork@gmail.com",
+  value: "photsathon.spd1@gmail.com",
+  href: "mailto:photsathon.spd1@gmail.com",
   icon: Mail,
  },
  {
@@ -707,7 +707,7 @@ export default function Home() {
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
        <a
-        href="mailto:acex.peachwork@gmail.com"
+        href="mailto:photsathon.spd1@gmail.com"
         className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#05070d] transition hover:bg-[#d9faff] focus:outline-none focus:ring-2 focus:ring-[#58e1ff] focus:ring-offset-2 focus:ring-offset-[#05070d]"
        >
         <Mail className="h-4 w-4" aria-hidden="true" />
@@ -954,7 +954,7 @@ function EmailToast() {
  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
  const copyEmail = useCallback(() => {
-  navigator.clipboard.writeText("acex.peachwork@gmail.com").then(() => {
+  navigator.clipboard.writeText("photsathon.spd1@gmail.com").then(() => {
    if (timeoutRef.current) clearTimeout(timeoutRef.current);
    setVisible(true);
    timeoutRef.current = setTimeout(() => setVisible(false), 2000);

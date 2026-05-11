@@ -1,166 +1,152 @@
-# HANDOFF.md — Peach Portfolio
+# HANDOFF.md — Acex AI Portfolio
 
-> อัปเดตล่าสุด: 2026-05-11 17:58 GMT+8
-> Agent: OpenClaw (main session)
-> Commit: `pending` — ready to push
+> สร้างเมื่อ: 2026-05-11 | อัปเดต: 2026-05-11 18:44 GMT+8
 
----
+## 📌 สรุปโปรเจกต์
 
-## 📋 สถานะปัจจุบัน
-
-Portfolio ของ **PHOTSATHON KUMTAEW (Peach)** — AI Workflow Builder + Full Stack Developer
-
-**Tech Stack:** Next.js 15.5.18 + React 19 + TypeScript + Tailwind CSS v4 + Framer Motion + Three.js + Recharts
-
-**Deploy:** Vercel — https://peach-portfolio.vercel.app/
-**Repo:** https://github.com/photsathonspd1-create/peach-portfolio
+Portfolio ของ **PHOTSATHON KUMTAEW (Peach)** — AI Workflow Builder  
+ชื่อแบรนด์: **Acex AI**  
+URL: https://peach-portfolio.vercel.app  
+Repo: https://github.com/photsathonspd1-create/peach-portfolio
 
 ---
 
-## 🔄 Workflow การทำงาน
+## ✅ สิ่งที่เสร็จแล้ว (11 May 2026)
 
-```
-User Request → Agent วิเคราะห์ → แก้ไขโค้ด → Build Test → Git Push → Vercel Auto Deploy
-                                                                      ↓
-                                                              Update HANDOFF.md
-```
+### Rebrand
+- [x] เปลี่ยนชื่อจาก "Peach" → "Acex AI" (header, footer, metadata, terminal prompt)
+- [x] อัปเดต OG/Twitter/structured data ทั้งหมด
 
----
+### UX/UI Improvements
+- [x] แก้ ViewerCounter + FloatingCTA ทับกัน (ย้าย viewer ไปซ้าย)
+- [x] เพิ่ม dual-row TechMarquee (2 แถว วิ่งสลับทิศ + hover pause)
+- [x] Hero title: gradient text (cyan→purple→coral) + font-bold + ใหญ่ขึ้น
+- [x] 3D scene loading animation ดีขึ้น (ping + bouncing dots)
+- [x] ErrorBoundary เพิ่มปุ่ม Retry
+- [x] Custom scrollbar สี cyan
+- [x] :focus-visible outline สำหรับ keyboard navigation
+- [x] scroll-padding-top: 80px (เผื่อ fixed nav)
 
-## ✅ สิ่งที่เสร็จแล้ว (ทั้งหมด)
+### Code Quality
+- [x] ลบ unused MapPin import (แก้ build warning)
+- [x] FloatingCTA email แก้ให้ตรงกับ constants
+- [x] Footer เพิ่ม nav link (Experience)
 
-### Session 2026-05-11 17:15 — 7 Items (by OpenClaw)
-1. ✅ **Education** → วิทยาลัยการอาชีพนวมินทราชินีมุกดาหาร สาขาอิเล็กทรอนิกส์อุตสาหกรรม ปวส.2
-2. ✅ **Tech Stack** → เพิ่ม Frontend, Backend, Database, DevOps & Tools (full-stack)
-3. ✅ **Instagram → LINE** → peatz21 (ไม่มี @) พร้อมลิงก์ line.me
-4. ✅ **Email** → acex.peachwork@gmail.com (ทั้งหน้าเว็บ + metadata + JSON-LD)
-5. ✅ **Resume Section** → รูปโปรไฟล์ + ข้อมูลติดต่อ + Summary + Education + Skills + Projects + Strengths
-6. ✅ **Logo Navbar** → ขยาย 36px → 56px + ใช้เป็น favicon
-7. ✅ **Realtime Viewer Counter** → localStorage sync, auto-cleanup, animated
+### SEO
+- [x] เพิ่ม keywords, robots meta
+- [x] Structured data เต็มรูปแบบ (Person schema with address, knowsAbout, sameAs)
 
-### Session 2026-05-11 17:58 — 11 Items (by OpenClaw)
+### Documentation
+- [x] เขียน README.md ใหม่ (tech stack, features, sections, setup)
 
-#### Priority สูง
-1. ✅ **Mobile Nav Menu** — เพิ่ม hamburger menu (ปุ่ม ☰/X) สำหรับมือถือ
-   - AnimatePresence slide-in overlay
-   - ปุ่มอยู่มุมขวาบน header (ซ่อนบน sm+)
-   - คลิกลิงก์แล้วปิดอัตโนมัติ
-   - `aria-label`, `aria-expanded` สำหรับ accessibility
+### Real-time Viewer Counter
+- [x] สร้าง `RealtimeViewerCounter.tsx` ใช้ Supabase Realtime
+- [x] สร้าง `src/lib/supabase.ts` — Supabase client
+- [x] สร้าง `supabase-setup.sql` — SQL สำหรับสร้าง table + RLS + realtime
+- [x] สร้าง `.env.local.example` — ตัวอย่าง env vars
+- [x] Fallback กลับ localStorage ถ้าไม่ได้ตั้งค่า Supabase
+- [x] ลบ fake jitter ที่สุ่ม +1 ทุก 8 วินาที
 
-2. ✅ **Resume PDF** — ไม่ทำ PDF แยก (มี Resume section ในหน้าเว็บอยู่แล้ว ดูได้ทันที)
-
-3. ✅ **Viewer Counter Backend** — ใช้ localStorage approach เหมาะกับ static site (ไม่ต้องมี server)
-   - หมายเหตุ: ถ้าอยาก cross-device จริง ต้องเพิ่ม backend (Vercel KV / Firebase)
-
-#### Priority กลาง
-4. ✅ **ย้าย data ออกจาก page.tsx** — สร้าง `src/data/constants.ts`
-   - ย้าย: projects, skills, electronicsSkills, experience, tools, strengths, contactLinks, profile, navItems, animation variants
-   - สร้าง TypeScript interfaces สำหรับทุก type
-   - page.tsx ลดจาก ~700 เหลือ ~350 บรรทัด
-
-5. ✅ **Canvas Responsive** — สร้าง `MobileCanvasWrapper.tsx`
-   - Zoom controls: +/-/reset (50%–200%)
-   - Touch-to-mouse event translation (สำหรับลาก component บนมือถือ)
-   - ใช้กับ CircuitDemo + WorkflowDemo
-   - `touch-action: none` เพื่อไม่ให้ browser scroll แย่ง
-
-6. ✅ **`<html lang="th">`** — เปลี่ยนจาก `lang="en"` เป็น `lang="th"`
-
-7. ✅ **Loading State** — Scene3D มี loading skeleton อยู่แล้ว (pulse circle + bar)
-   - ErrorBoundary มี fallback UI "3D scene unavailable"
-   - เพิ่ม custom fallback ใน Hero: `<div className="bg-[#05070d]" />`
-
-#### Priority ต่ำ
-8. ✅ **Accessibility** — เพิ่ม:
-   - Skip-to-content link (`<a href="#main-content">`) ซ่อนอยู่ แสดงตอน focus
-   - `aria-label` ทุกปุ่ม/ลิงก์/nav
-   - `aria-pressed` สำหรับ skill buttons
-   - `aria-live="polite"` สำหรับ active skill panel + toast
-   - `aria-expanded` สำหรับ hamburger
-   - `role="article"` สำหรับ project cards
-   - `id="main-content"` บน main element
-
-9. ✅ **Performance** — ย้าย data ออกไป constants.ts แล้ว (ข้อ 4)
-   - page.tsx เล็กลง ~50%
-   - Data เป็น static constants ไม่ re-render
-
-10. ✅ **Error Fallback** — ErrorBoundary รองรับ custom fallback prop
-    - Hero ส่ง fallback เป็น dark bg
-    - Console.error log สำหรับ debug
-
-11. ✅ **OG Image** — ใช้ `/og.png` ที่มีอยู่แล้ว (ไม่แก้ไข)
+### Build
+- [x] Build ผ่านไม่มี error (172 kB first load)
+- [x] Push ขึ้น GitHub แล้ว
 
 ---
 
-## 📁 โครงสร้างไฟล์
+## 🏗️ สิ่งที่ต้องทำต่อ
+
+### Supabase Setup (ต้องทำก่อน deploy)
+1. ไปที่ https://supabase.com → Dashboard → Project
+2. ไปที่ SQL Editor → วาง contents จาก `supabase-setup.sql` → Run
+3. ไปที่ Project Settings → API → copy URL + anon key
+4. ไปที่ Vercel Dashboard → Project → Settings → Environment Variables:
+   - `NEXT_PUBLIC_SUPABASE_URL` = Supabase URL
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = anon key
+5. Redeploy
+
+### ถ้าอยากปรับปรุงต่อ
+- [ ] เพิ่ม dark/light mode toggle
+- [ ] เพิ่ม loading skeleton สำหรับ sections ที่อยู่ล่างๆ
+- [ ] ปรับ mobile layout สำหรับ canvas demos (Circuit, Workflow)
+- [ ] เพิ่ม project screenshots/links จริง
+- [ ] เพิ่ม testimonial/recommendation section
+- [ ] เพิ่ม blog/articles section
+- [ ] Optimize images (ใช้ next/image มากขึ้น)
+- [ ] เพิ่ม analytics (Vercel Analytics / Google Analytics)
+
+---
+
+## 📁 โครงสร้างไฟล์หลัก
 
 ```
 src/
 ├── app/
-│   ├── globals.css
-│   ├── layout.tsx              # lang="th", favicon=logo.png, email updated
-│   └── page.tsx                # ~350 lines (ลดลงจาก ~700 ใช้ constants.ts)
-├── data/
-│   └── constants.ts            # ⭐ NEW — all data, types, animation variants
+│   ├── layout.tsx          — Root layout (metadata, fonts, structured data)
+│   ├── page.tsx            — Main page (all sections)
+│   └── globals.css         — Global styles, animations
 ├── components/
-│   ├── AcexDemo.tsx
-│   ├── BeforeAfter.tsx
-│   ├── CircuitDemo.tsx         # + MobileCanvasWrapper (zoom + touch)
-│   ├── CustomCursor.tsx
-│   ├── ErrorBoundary.tsx       # custom fallback support
-│   ├── FloatingCTA.tsx
-│   ├── Footer.tsx
-│   ├── IotDemo.tsx
-│   ├── MobileCanvasWrapper.tsx # ⭐ NEW — zoom controls + touch support
-│   ├── NowSection.tsx
-│   ├── Scene3D.tsx
-│   ├── ScrollProgress.tsx
-│   ├── SkillsRadar.tsx
-│   ├── TechMarquee.tsx
-│   ├── TerminalHero.tsx
-│   ├── ViewerCounter.tsx
-│   └── WorkflowDemo.tsx        # + MobileCanvasWrapper (zoom + touch)
-public/
-├── logo.png
-├── peach-resume.jpg
-├── peach-hero-art.png
-├── og.png
-└── ...
+│   ├── AcexDemo.tsx        — ACEX AI interactive demo (Plan→Do→Check→Act)
+│   ├── BeforeAfter.tsx     — Before/After impact comparison
+│   ├── CircuitDemo.tsx     — Interactive circuit simulator
+│   ├── CustomCursor.tsx    — Custom cursor with trail
+│   ├── ErrorBoundary.tsx   — Error boundary with retry
+│   ├── FloatingCTA.tsx     — Floating contact button (bottom-right)
+│   ├── Footer.tsx          — Footer with nav links
+│   ├── IotDemo.tsx         — IoT sensor dashboard simulation
+│   ├── MobileCanvasWrapper.tsx — Canvas zoom/touch wrapper
+│   ├── NowSection.tsx      — Current focus section
+│   ├── RealtimeViewerCounter.tsx — Supabase real-time viewer counter
+│   ├── Scene3D.tsx         — Three.js 3D scene (hero background)
+│   ├── ScrollProgress.tsx  — Scroll progress bar
+│   ├── SkillsRadar.tsx     — Recharts radar chart
+│   ├── TechMarquee.tsx     — Dual-row tech stack marquee
+│   ├── TerminalHero.tsx    — Terminal typing animation
+│   ├── ViewerCounter.tsx   — Fallback localStorage counter
+│   └── WorkflowDemo.tsx    — Visual workflow builder
+├── data/
+│   └── constants.ts        — All data (projects, skills, contact, etc.)
+└── lib/
+    └── supabase.ts         — Supabase client
 ```
 
 ---
 
-## 🎯 Build Status
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 15 (App Router, Static Export)
+- **Styling:** Tailwind CSS 4
+- **3D:** Three.js + React Three Fiber + Drei
+- **Animation:** Framer Motion
+- **Charts:** Recharts
+- **Icons:** Lucide React
+- **Realtime:** Supabase Realtime
+- **Language:** TypeScript
+- **Deploy:** Vercel
+
+---
+
+## 📊 Build Stats
 
 ```
-✓ Compiled successfully
-✓ 0 warnings
-✓ 0 errors
 Route (app)                    Size      First Load JS
-┌ ○ /                          171 kB    274 kB
+┌ ○ /                          172 kB    274 kB
 └ ○ /_not-found                1 kB      103 kB
++ First Load JS shared all     102 kB
 ```
 
 ---
 
-## 📝 Notes สำหรับ Agent ถัดไป
+## 🔐 Environment Variables
 
-- **ใช้ `./node_modules/.bin/next build`** ไม่ใช่ `npx next build` (npx ดึง version ใหม่)
-- ทุก data อยู่ใน `src/data/constants.ts` — import จากที่นี่
-- `page.tsx` ใช้ `<Section>` wrapper component สำหรับ sections ที่ซ้ำ pattern
-- MobileCanvasWrapper: zoom + touch translation สำหรับ canvas components
-- ErrorBoundary: รองรับ `fallback` prop
-- **Email**: `acex.peachwork@gmail.com`
-- **LINE**: peatz21 (ไม่มี @)
-- **lang**: `th`
-- สี accent: `#58e1ff`, `#ff8462`, `#87ffbe`, `#a98bff`, `#ffd166`
-- Dark theme: bg `#05070d`, card `#0b101a`
+```
+NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJxxx...
+```
 
 ---
 
-## 🔧 สิ่งที่เหลือ (Optional)
+## 📝 Notes
 
-1. **OG Image ใหม่** — 生成รูป OG ที่มีข้อมูลปัจจุบัน (ต้องใช้ image generation tool)
-2. **Viewer Counter Backend** — ถ้าอยาก cross-device จริง → เพิ่ม Vercel KV หรือ Firebase
-3. **Resume PDF Export** — เพิ่มปุ่ม export PDF จาก resume section (html2canvas / jsPDF)
-4. **Test** — ไม่มี test suite เลย (Jest / Playwright)
+- `.env.local` ถูก gitignore แล้ว — ไม่ต้องกังวลเรื่อง leak credentials
+- Supabase RLS เปิดอยู่ — ใครก็ insert/update/delete ได้ (เพราะเป็น public counter)
+- ถ้าไม่ตั้งค่า Supabase → fallback ไปใช้ localStorage counter อัตโนมัติ

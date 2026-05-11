@@ -45,6 +45,8 @@ import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import TechMarquee from "@/components/TechMarquee";
 import ViewerCounter from "@/components/ViewerCounter";
+
+const RealtimeViewerCounter = dynamic(() => import("@/components/RealtimeViewerCounter"), { ssr: false });
 import CircuitDemo from "@/components/CircuitDemo";
 import WorkflowDemo from "@/components/WorkflowDemo";
 import IotDemo from "@/components/IotDemo";
@@ -515,7 +517,7 @@ export default function Home() {
     <Footer />
     <FloatingCTA />
     <CustomCursor />
-    <ViewerCounter />
+    {process.env.NEXT_PUBLIC_SUPABASE_URL ? <RealtimeViewerCounter /> : <ViewerCounter />}
    </main>
   </>
  );

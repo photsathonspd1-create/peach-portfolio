@@ -37,6 +37,9 @@ import FloatingCTA from "@/components/FloatingCTA";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import TechMarquee from "@/components/TechMarquee";
+import CircuitDemo from "@/components/CircuitDemo";
+import WorkflowDemo from "@/components/WorkflowDemo";
+import IotDemo from "@/components/IotDemo";
 
 const Scene3D = dynamic(() => import("@/components/Scene3D"), {
  ssr: false,
@@ -270,6 +273,10 @@ export default function Home() {
    <NowSection />
 
    <AcexDemo />
+
+   <CircuitDemo />
+   <WorkflowDemo />
+   <IotDemo />
 
    {/* Projects */}
    <section

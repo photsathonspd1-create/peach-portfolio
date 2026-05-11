@@ -1,6 +1,6 @@
 # 🍑 Peach Portfolio — Agent Handoff
 
-> Last updated: 2026-05-11 14:35 GMT+8 by OpenClaw agent (Round 4 — bug fixes)
+> Last updated: 2026-05-11 14:45 GMT+8 by OpenClaw agent (Round 5 — 3 interactive demos)
 
 ---
 
@@ -68,7 +68,10 @@ peach-portfolio/
 │       ├── FloatingCTA.tsx    # Floating contact button (bottom-right)
 │       ├── CustomCursor.tsx   # Custom cursor effect (desktop only)
 │       ├── ScrollProgress.tsx # ✅ NEW — scroll progress bar (top, cyan→peach)
-│       └── TechMarquee.tsx    # ✅ NEW — scrolling tech stack ticker
+│       ├── TechMarquee.tsx    # ✅ NEW — scrolling tech stack ticker
+│       ├── CircuitDemo.tsx    # ✅ NEW — 2D circuit board simulation (Canvas)
+│       ├── WorkflowDemo.tsx   # ✅ NEW — drag & connect workflow builder (Canvas)
+│       └── IotDemo.tsx        # ✅ NEW — IoT sensor dashboard simulation
 ├── HANDOFF.md                 # ← THIS FILE
 ├── ROADMAP.md                 # Feature backlog
 ├── package.json
@@ -220,13 +223,77 @@ npx vercel --prod  # Deploy to Vercel (ต้อง login ก่อน)
 
 ---
 
+## ✅ Features Added (2026-05-11 — Round 5: Interactive Demos)
+
+### Demo 1: Electronics Circuit Simulator (`src/components/CircuitDemo.tsx`)
+- [x] HTML Canvas 700×320px, dark PCB-green background (#0a1a0a) with grid dots
+- [x] 6 components: Battery, Arduino Uno, LED, Resistor, Relay, DHT22 Sensor
+- [x] Wires: red (power), black (ground), yellow (signal)
+- [x] Click any component → info panel with Thai description + use case
+- [x] Toggle "เปิดวงจร / ปิดวงจร" button
+- [x] When ON: LED glows (yellow shadow), current particles flow along wires
+- [x] When OFF: all dark, particles stop
+- [x] Responsive canvas (scrollable on mobile)
+
+### Demo 2: AI Workflow Builder (`src/components/WorkflowDemo.tsx`)
+- [x] HTML Canvas 700×380px, node-based visual workflow builder
+- [x] 6 draggable nodes: Input, AI Process, Decision, Output A, Retry, Done
+- [x] Each node: rounded rect 130×50px, colored border
+- [x] Bezier curve edges with arrows connecting nodes
+- [x] Drag any node → connections update dynamically
+- [x] Click node → highlight + description panel below
+- [x] "Reset Layout" button → returns to default positions
+- [x] Touch events supported (touchAction: "none")
+- [x] No external library — pure Canvas + React state
+
+### Demo 3: IoT Sensor Dashboard (`src/components/IotDemo.tsx`)
+- [x] 4 sensor cards (2×2 grid): Temperature, Humidity, Light, Motion
+- [x] Live readings update every 2 seconds with random variation
+- [x] Mini sparkline bar chart (last 10 readings)
+- [x] Status badges: Normal / Warning / Alert (color-coded)
+- [x] Top bar: "🟢 Connected — ESP32 Device · ชลบุรี" + timestamp
+- [x] "Simulate Alert" button → pushes temp to 38°C for 3s → card turns red
+- [x] Pulsing green dot on "Connected" status
+- [x] Matches dark portfolio color scheme
+
+### Integration in page.tsx
+- [x] Placed after `<AcexDemo />`, before Projects section
+- [x] Order: CircuitDemo → WorkflowDemo → IotDemo
+- [x] Section IDs: circuit-demo, workflow-demo, iot-demo
+- [x] Each has "Interactive Demo" label tag
+
+### Build Status (Round 5)
+```
+Route (app)                    Size      First Load JS
+┌ ○ /                         160 kB    263 kB
+└ ○ /_not-found               1 kB      103 kB
++ First Load JS shared all    102 kB
+
+✓ Compiled successfully
+✓ Linting passed (0 warnings)
+✓ TypeScript passed
+✓ Static pages generated (5/5)
+```
+
+### Files Added (Round 5)
+- **Added:** `src/components/CircuitDemo.tsx`
+- **Added:** `src/components/WorkflowDemo.tsx`
+- **Added:** `src/components/IotDemo.tsx`
+- **Modified:** `src/app/page.tsx` (imports + 3 component placements)
+- **Modified:** `HANDOFF.md` (this file)
+
+---
+
 ## 📊 Section Order ใน page.tsx (ลำดับบนลงล่าง)
 
 1. `<ScrollProgress />` — fixed top bar
 2. `<Hero>` — terminal typewriter + h1 + floating cards
 3. `<NowSection />` — what I'm doing now
 4. `<AcexDemo />` — ACEX AI interactive demo
-5. Projects section — 4 project cards
+5. `<CircuitDemo />` — electronics circuit simulator ✅ NEW
+6. `<WorkflowDemo />` — AI workflow drag & connect ✅ NEW
+7. `<IotDemo />` — IoT sensor dashboard ✅ NEW
+8. Projects section — 4 project cards
 6. `<BeforeAfter />` — before/after impact + animated counters
 7. Skills section — 6 interactive skill cards + sidebar
 8. Electronics section — 5 hardware skills

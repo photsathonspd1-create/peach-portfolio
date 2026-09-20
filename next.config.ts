@@ -14,7 +14,7 @@ const nextConfig = async (): Promise<NextConfig> => {
         "ai-gateway-auth-method": "oidc",
         "ai-evaluation-model-specification-version": "4",
         "ai-model-id": "typesafe-ai/jev",
-        "x-vercel-ai-gateway-team": "photsathon-kumtaews-projects",
+        "x-vercel-ai-gateway-team": "team_E2whOLyMaYCmXQqxXkQ3ZoeK",
       },
       body: JSON.stringify({
         state: "The support agent issued a full refund to the customer.",
